@@ -4,25 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthManager : Singleton<HealthManager>
+public class HealthManager : MonoBehaviour
 {
-    [SerializeField] private Color green;
-    [SerializeField] private Color red;
-    [SerializeField] private Color yellow;
+    [SerializeField] private Color green = new Color32(23, 199, 0 , 255);
+    [SerializeField] private Color red = new Color32(178, 7, 7, 255);
+    [SerializeField] private Color yellow = new Color32(233, 242, 0, 255);
     
     
     public Image healthBar;
 
-    private void Start()
+    private void Awake()
     {
         LoadHealthBar();
         EventSystem.Instance.AddListener(EEvent.OnPlayerHealthChange, LoadHealthBar);
+        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, LoadHealthBar);
     }
 
     private void LoadHealthBar()
     {
         float value = PlayerInfo.Instance.health / PlayerInfo.Instance.maxHealth;
-        Debug.Log(PlayerInfo.Instance.health + " " + PlayerInfo.Instance.maxHealth + " " + value);
+        //Debug.Log(PlayerInfo.Instance.health + " " + PlayerInfo.Instance.maxHealth + " " + value);
         healthBar.rectTransform.localScale = new Vector3(value, 1, 1);
         ChangeHealthBarColor(PlayerInfo.Instance.health);
     }
@@ -42,5 +43,11 @@ public class HealthManager : Singleton<HealthManager>
             healthBar.color = red;
         }
         
+    }
+
+    private void BeforeLoadScene()
+    {
+        EventSystem.Instance.RemoveListener(EEvent.OnPlayerHealthChange, LoadHealthBar);
+        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, LoadHealthBar);
     }
 }

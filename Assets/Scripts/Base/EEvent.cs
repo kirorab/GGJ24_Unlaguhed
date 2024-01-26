@@ -1,6 +1,10 @@
 public enum EEvent
 {
+    /// <summary>
+    /// 玩家血量改变时
+    /// </summary>
     OnPlayerHealthChange,
+    
     /// <summary>
     /// 切换场景前
     /// </summary>
