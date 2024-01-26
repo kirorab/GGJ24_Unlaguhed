@@ -21,7 +21,7 @@ public class GhostPoundingTheWallTrigger : MonoBehaviour
         {
             col.enabled = true;
         }
-        Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().
         GetComponent<Collider2D>().enabled = false;
+        Camera.main.GetComponent<CameraController>().RemoveXDamping();
     }
 }

@@ -1,28 +1,28 @@
 public enum EEvent
 {
     /// <summary>
-    /// ���Ѫ���ı�ʱ
+    /// 玩家血条改变时
     /// </summary>
     OnPlayerHealthChange,
     
     /// <summary>
-    /// �л�����ǰ
+    /// 切换场景前
     /// </summary>
     BeforeLoadScene,
     /// <summary>
-    /// ��ʼ���ڹ��ս��ʱ
+    /// 开始与乌龟的战斗时
     /// </summary>
     OnStartTurtleBattle,
     /// <summary>
-    /// �������ڹ��ս��ʱ
+    /// 结束与乌龟的战斗时
     /// </summary>
     OnEndTurtleBattle,
     /// <summary>
-    /// ��ʼ�뱦���ε�ս��ʱ
+    /// 开始与宝可梦的战斗时
     /// </summary>
     OnStartPokemonBattle,
     /// <summary>
-    /// �����뱦���ε�ս��ʱ
+    /// 结束与宝可梦的战斗时
     /// </summary>
     OnEndPokemonBattle,
 }
