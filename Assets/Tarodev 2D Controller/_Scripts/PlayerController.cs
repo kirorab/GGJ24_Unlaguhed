@@ -129,9 +129,11 @@ namespace TarodevController
                         Debug.Log("Jump on enemy");
                         PerformBounce();
                         EnemyJumpedOn(collision.gameObject);
-                        break;
+                        return;
                     }
                 }
+                //玩家以非跳踩的形式接触到敌人
+                
             }
         }
 
