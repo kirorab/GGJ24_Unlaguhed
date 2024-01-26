@@ -133,7 +133,7 @@ namespace TarodevController
                     }
                 }
                 //玩家以非跳踩的形式接触到敌人
-                
+                PlayerInfo.Instance.ChangeHealth(-1);
             }
         }
 
