@@ -21,7 +21,23 @@ public class GhostPoundingTheWallTrigger : MonoBehaviour
         {
             col.enabled = true;
         }
-        Camera.main.GetComponentInChildren<CinemachineVirtualCamera>().
         GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(DoChangeXDamping());
+    }
+
+    private IEnumerator DoChangeXDamping()
+    {
+        CinemachineVirtualCamera virCam = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
+        CinemachineTransposer transposer = virCam.GetCinemachineComponent<CinemachineTransposer>();
+        float duration = 1f;
+        float time = 0;
+        float start = transposer.m_XDamping;
+        while (time < duration)
+        {
+            transposer.m_XDamping = start * (1 - time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transposer.m_XDamping = 0;
     }
 }
