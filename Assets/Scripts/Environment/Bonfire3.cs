@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bonfire3 : MonoBehaviour, IInteractive
+public class Bonfire3 : InteractiveObject
 {
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class Bonfire3 : MonoBehaviour, IInteractive
         }
     }
 
-    public void OnInteract()
+    public override void OnInteract()
     {
 
     }

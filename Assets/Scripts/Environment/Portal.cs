@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        // TODO Íæ¼ÒË²ÒÆ
+        // TODO çŽ©å®¶çž¬ç§»
         if ((right && player.position.x > transform.position.x) || (!right && player.position.x < transform.position.x))
         {
             float delta = player.position.x - transform.position.x;
