@@ -6,6 +6,9 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
     private CinemachineVirtualCamera virCam;
+    private CinemachineTransposer transposer;
+    private Coroutine dampingCoroutine;
+    private float xDamping;
 
     public Transform turtleBattleCenter;
     public Transform pokemonBattleCenter;
@@ -14,6 +17,8 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         virCam = GetComponentInChildren<CinemachineVirtualCamera>();
+        transposer = virCam.GetCinemachineComponent<CinemachineTransposer>();
+        xDamping = transposer.m_XDamping;
         EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, LockCameraOnTurtleBattle);
         EventSystem.Instance.AddListener(EEvent.OnEndTurtleBattle, RestoreCamera);
         EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, LockCameraOnPokemonBattle);
@@ -28,6 +33,12 @@ public class CameraController : MonoBehaviour
 
     private void LockCameraOnPokemonBattle()
     {
+        if (dampingCoroutine != null)
+        {
+            StopCoroutine(dampingCoroutine);
+            dampingCoroutine = null;
+        }
+        transposer.m_XDamping = xDamping;
         virCam.Follow = pokemonBattleCenter;
     }
 
@@ -44,5 +55,23 @@ public class CameraController : MonoBehaviour
         EventSystem.Instance.RemoveListener(EEvent.OnStartPokemonBattle, LockCameraOnPokemonBattle);
         EventSystem.Instance.RemoveListener(EEvent.OnEndPokemonBattle, RestoreCamera);
         EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
+    }
+
+    public void RemoveXDamping()
+    {
+        dampingCoroutine = StartCoroutine(DoRemoveXDamping());
+    }
+
+    private IEnumerator DoRemoveXDamping()
+    {
+        float duration = 1f;
+        float time = 0;
+        while (time < duration)
+        {
+            transposer.m_XDamping = xDamping * (1 - time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transposer.m_XDamping = 0;
     }
 }
