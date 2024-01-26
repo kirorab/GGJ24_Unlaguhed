@@ -55,5 +55,8 @@ namespace TarodevController
 
         [Tooltip("空中的阻力")] 
         public float AirResistance = 5f;
+        
+        [Tooltip("反弹的力")]
+        public float bounceForce = 5f; // 这里可以根据需要调整跳跃力度
     }
 }

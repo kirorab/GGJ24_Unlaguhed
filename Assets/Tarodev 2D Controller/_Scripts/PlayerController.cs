@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace TarodevController
@@ -115,7 +116,47 @@ namespace TarodevController
 
         #endregion
 
+        #region JumpedOnEnemy
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Enemy")) // 或者使用Layer来检测
+            {
+                foreach (ContactPoint2D point in collision.contacts)
+                {
+                    if (point.normal.y >= 0.5f) // 确保是从上方碰到敌人
+                    {
+                        // 玩家踩到了敌人
+                        Debug.Log("Jump on enemy");
+                        PerformBounce();
+                        EnemyJumpedOn(collision.gameObject);
+                        break;
+                    }
+                }
+            }
+        }
 
+        private void PerformBounce()
+        {
+            ExecuteJump(_stats.bounceForce);
+        }
+
+        private void EnemyJumpedOn(GameObject enemy)
+        {
+            // 使敌人掉落的逻辑
+            var enemyCollider = enemy.GetComponent<Collider2D>();
+            if (enemyCollider != null)
+            {
+                enemyCollider.enabled = false;
+            }
+
+            // 可以设置一个延时后销毁敌人对象
+            Destroy(enemy, 2f); // 2秒后销毁敌人
+            // 例如：Destroy(enemy); 或者播放敌人消失的动画
+        }
+        
+
+        #endregion
+        
         #region Jumping
 
         private bool _jumpToConsume;
@@ -133,18 +174,18 @@ namespace TarodevController
 
             if (!_jumpToConsume && !HasBufferedJump) return;
 
-            if (_grounded || CanUseCoyote) ExecuteJump();
+            if (_grounded || CanUseCoyote) ExecuteJump(_stats.JumpPower);
 
             _jumpToConsume = false;
         }
 
-        private void ExecuteJump()
+        private void ExecuteJump(float power)
         {
             _endedJumpEarly = false;
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
-            _frameVelocity.y = _stats.JumpPower;
+            _frameVelocity.y = power;
             Jumped?.Invoke();
         }
 
