@@ -47,6 +47,7 @@ public class Turtle : MonoBehaviour
         TurtleState = ETurtleState.Idle;
 
         EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, StartAttack);
+        EventSystem.Instance.AddListener<bool>(EEvent.OnEndTurtleChoose, OnTurtleChoose);
     }
 
     private void Update()
@@ -112,6 +113,7 @@ public class Turtle : MonoBehaviour
             TurtleState = ETurtleState.Weak;
             if (!killTurtleChoosed && curStage == 2)
             {
+                yield return new WaitForSeconds(1f);
                 TurtleState = ETurtleState.Idle;
                 EventSystem.Instance.Invoke(EEvent.OnTurtleChoose);
                 killTurtleChoosed = true;
@@ -121,14 +123,33 @@ public class Turtle : MonoBehaviour
         }
     }
 
+    private void OnTurtleChoose(bool isForgive)
+    {
+        if (isForgive)
+        {
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
+            TurtleState = ETurtleState.Follow;
+            EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
+        }
+        else
+        {
+            currentCoroutine = StartCoroutine(RestartAttack());
+        }
+    }
+
+    private IEnumerator RestartAttack()
+    {
+        TurtleState = ETurtleState.Weak;
+        yield return new WaitForSeconds(weakDuration);
+        StartAttack();
+    }
+
     public void GetHurt()
     {
         StopCoroutine(currentCoroutine);
         if (curStage == 2)
         {
-            // TODO ÎÚ¹êËÀÍö
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
-            TurtleState = ETurtleState.Follow;
+            gameObject.SetActive(false);
             EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
         }
         else
@@ -183,7 +204,9 @@ public class Turtle : MonoBehaviour
             Destroy(turtleShell.gameObject);
         }
         turtleShells.Clear();
-        curStage = 2;
-        GetHurt();
+        StopCoroutine(currentCoroutine);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
+        TurtleState = ETurtleState.Follow;
+        EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
     }
 }
