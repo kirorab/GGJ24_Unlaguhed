@@ -13,19 +13,12 @@ public class Portal : MonoBehaviour
     private void Awake()
     {
         EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, RemovePortalTrigger);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
         player = PlayerInfo.Instance.GetPlayerPosition();
     }
 
     private void RemovePortalTrigger()
     {
         GetComponent<Collider2D>().enabled = false;
-    }
-
-    private void BeforeLoadScene()
-    {
-        EventSystem.Instance.RemoveListener(EEvent.OnStartPokemonBattle, RemovePortalTrigger);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void OnTriggerStay2D(Collider2D collision)

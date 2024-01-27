@@ -13,14 +13,10 @@ public class PlayerInfo : Singleton<PlayerInfo>
     public Color invincibleColor = new Color(1f, 1f, 1f, 0.5f); // 半透明
     private float flashDuration = 0.1f; // 闪烁持续时间
     private float flashTimer;
-    private void Awake()
+
+    protected override void Awake()
     {
-        if (_instance != null)
-        {
-            Destroy(_instance.gameObject);
-        }
-        _instance = this;
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
+        base.Awake();
         _player = gameObject.GetComponent<Transform>();
         health = maxHealth;
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -29,13 +25,6 @@ public class PlayerInfo : Singleton<PlayerInfo>
         {
             originColors[i] = spriteRenderers[i].color;
         }
-    }
-
-    private void BeforeLoadScene()
-    {
-        Destroy(gameObject);
-        _instance = null;
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     public void TakeDamage(int change)

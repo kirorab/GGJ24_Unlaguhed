@@ -22,7 +22,6 @@ public class CameraController : MonoBehaviour
         EventSystem.Instance.AddListener(EEvent.OnEndTurtleBattle, RestoreCamera);
         EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, LockCameraOnPokemonBattle);
         EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, RestoreCamera);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void LockCameraOnTurtleBattle()
@@ -44,15 +43,6 @@ public class CameraController : MonoBehaviour
     private void RestoreCamera()
     {
         virCam.Follow = PlayerInfo.Instance.transform;
-    }
-
-    private void BeforeLoadScene()
-    {
-        EventSystem.Instance.RemoveListener(EEvent.OnStartTurtleBattle, LockCameraOnTurtleBattle);
-        EventSystem.Instance.RemoveListener(EEvent.OnEndTurtleBattle, RestoreCamera);
-        EventSystem.Instance.RemoveListener(EEvent.OnStartPokemonBattle, LockCameraOnPokemonBattle);
-        EventSystem.Instance.RemoveListener(EEvent.OnEndPokemonBattle, RestoreCamera);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     public void RemoveXDamping()

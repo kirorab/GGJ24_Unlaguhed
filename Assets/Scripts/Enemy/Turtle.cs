@@ -47,7 +47,6 @@ public class Turtle : MonoBehaviour
         TurtleState = ETurtleState.Idle;
 
         EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, StartAttack);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void Update()
@@ -113,9 +112,10 @@ public class Turtle : MonoBehaviour
             TurtleState = ETurtleState.Weak;
             if (!killTurtleChoosed && curStage == 2)
             {
-                // TODO ÈÄ¹ýÎÚ¹ê
-                print("ÈÄËûÒ»Ãü");
+                TurtleState = ETurtleState.Idle;
+                EventSystem.Instance.Invoke(EEvent.OnTurtleChoose);
                 killTurtleChoosed = true;
+                yield break;
             }
             yield return new WaitForSeconds(weakDuration);
         }
@@ -174,12 +174,6 @@ public class Turtle : MonoBehaviour
             }
             towardsRight = !towardsRight;
         }
-    }
-
-    private void BeforeLoadScene()
-    {
-        EventSystem.Instance.RemoveListener(EEvent.OnStartTurtleBattle, StartAttack);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     public void Cheat()

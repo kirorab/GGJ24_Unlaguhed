@@ -9,13 +9,10 @@ public class UIManager : Singleton<UIManager>
     public GameObject SaveFailed;
     public GameObject DandCbg;
     public GameObject TurtleChoose;
-    private void Awake()
+
+    protected override void Awake()
     {
-        if (_instance != null)
-        {
-            Destroy(_instance.gameObject);
-        }
-        _instance = this;
+        base.Awake();
         SaveFailed.SetActive(false);
         DandCbg.SetActive(false);
         TurtleChoose.SetActive(false);
@@ -24,20 +21,6 @@ public class UIManager : Singleton<UIManager>
         EventSystem.Instance.AddListener(EEvent.OnEndDialogue, SetDandCbgActiveFalse);
         EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, HandleTurtleChoose);
         EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, SetDandCbgActiveTrue);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
-    }
-
-    private void BeforeLoadScene()
-    {
-        Destroy(gameObject);
-        _instance = null;
-        EventSystem.Instance.RemoveListener(EEvent.OnSaveFailed, HandleSaveFailed);
-        EventSystem.Instance.RemoveListener(EEvent.OnStartDialogue, SetDandCbgActiveTrue);
-        EventSystem.Instance.RemoveListener(EEvent.OnEndDialogue, SetDandCbgActiveFalse);
-        EventSystem.Instance.RemoveListener(EEvent.OnTurtleChoose, HandleTurtleChoose);
-        EventSystem.Instance.RemoveListener(EEvent.OnTurtleChoose, SetDandCbgActiveTrue);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
-
     }
 
     // Start is called before the first frame update

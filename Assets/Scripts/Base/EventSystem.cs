@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[DefaultExecutionOrder(-100)]
 public sealed class EventSystem : Singleton<EventSystem>
 {
     private Dictionary<EEvent, Type> typeDict;
     private Dictionary<EEvent, Delegate> eventDict;
 
-    private void Awake()
+    protected override void Awake()
     {
         typeDict = new Dictionary<EEvent, Type>();
         eventDict = new Dictionary<EEvent, Delegate>();
+        base.Awake();
     }
 
     private bool Check(EEvent eEvent, Type methodType)
