@@ -31,22 +31,33 @@ namespace TarodevController
 
         private float _time;
 
-        
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
             _anim = GetComponentInChildren<Animator>();
-            
+
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
-            EventSystem.Instance.AddListener(EEvent.OnStartDialogue, ((Dialogues dia) => CanMove = false));
-            EventSystem.Instance.AddListener(EEvent.OnEndDialogue, (() => CanMove = true));
+            EventSystem.Instance.AddListener<Dialogues>(EEvent.OnStartDialogue, SetCanMoveFalse);
+            EventSystem.Instance.AddListener(EEvent.OnEndDialogue, SetCanMoveTrue);
+            EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
         }
 
-        private void OnDestroy()
+        private void BeforeLoadScene()
         {
-            EventSystem.Instance.RemoveListener(EEvent.OnStartDialogue, ((Dialogues dia) => CanMove = false));
-            EventSystem.Instance.RemoveListener(EEvent.OnEndDialogue, (() => CanMove = true));
+            EventSystem.Instance.RemoveListener<Dialogues>(EEvent.OnStartDialogue, SetCanMoveFalse);
+            EventSystem.Instance.RemoveListener(EEvent.OnEndDialogue, SetCanMoveTrue);
+            EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
+        }
+
+        private void SetCanMoveFalse(Dialogues dia)
+        {
+            CanMove = false;
+        }
+
+        private void SetCanMoveTrue()
+        {
+            CanMove = true;
         }
 
         private void Update()

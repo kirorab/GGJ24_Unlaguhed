@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue System/Dialogue")]
+//[CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue System/Dialogue")]
 [System.Serializable]
 public class DialogueNode 
 {

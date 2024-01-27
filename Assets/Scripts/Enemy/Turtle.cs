@@ -23,13 +23,13 @@ public class Turtle : MonoBehaviour
     public int[] collisionCounts;
     public float moveSpeed;
     public float rushSpeed;
+    public float followSpeed;
     public float followDist;
 
     private Rigidbody2D rb2d;
     private Animator animator;
     private Coroutine currentCoroutine;
     private List<TurtleShell> turtleShells;
-    [SerializeField]
     private bool towardsRight;
     private int curCollisionCount;
     private int curStage;
@@ -52,10 +52,6 @@ public class Turtle : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StartAttack();
-        }
         if (TurtleState == ETurtleState.Idle || TurtleState == ETurtleState.RetractShell)
         {
             rb2d.velocity = Vector2.zero;
@@ -71,12 +67,12 @@ public class Turtle : MonoBehaviour
             if (transform.position.x < PlayerInfo.Instance.transform.position.x - followDist)
             {
                 animator.Play("Walk");
-                rb2d.velocity = Vector2.right * moveSpeed;
+                rb2d.velocity = Vector2.right * followSpeed;
             }
             else if (transform.position.x > PlayerInfo.Instance.transform.position.x + followDist)
             {
                 animator.Play("Walk");
-                rb2d.velocity = Vector2.left * moveSpeed;
+                rb2d.velocity = Vector2.left * followSpeed;
             }
             else
             {
@@ -172,8 +168,8 @@ public class Turtle : MonoBehaviour
                 curCollisionCount++;
                 if (curCollisionCount == collisionCounts[curStage])
                 {
-                    StartAttack();
                     curStage++;
+                    StartAttack();
                 }
             }
             towardsRight = !towardsRight;

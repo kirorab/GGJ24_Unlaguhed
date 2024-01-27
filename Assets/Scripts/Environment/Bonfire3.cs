@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bonfire3 : Bonfire
 {
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
         EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, ShowSelf);
@@ -24,10 +24,10 @@ public class Bonfire3 : Bonfire
         base.OnInteract();
         PlayerInfo.Instance.TakeDamage(1);
     }
-    private void Update()
+
+    public override void Update()
     {
         BaseUpdate();
-        
     }
 
     private void BeforeLoadScene()

@@ -11,7 +11,7 @@ public class Bonfire : InteractiveObject
     private SpriteRenderer _sprite;
     private Transform _transform;
     [SerializeField] private float blockLength = 2.25f;
-    protected void Awake()
+    protected virtual void Awake()
     {
         _sprite = GetComponent<SpriteRenderer>();
         _transform = GetComponent<Transform>();

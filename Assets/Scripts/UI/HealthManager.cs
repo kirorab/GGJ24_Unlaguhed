@@ -17,7 +17,7 @@ public class HealthManager : MonoBehaviour
     {
         LoadHealthBar();
         EventSystem.Instance.AddListener(EEvent.OnPlayerHealthChange, LoadHealthBar);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, LoadHealthBar);
+        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void LoadHealthBar()
@@ -48,6 +48,6 @@ public class HealthManager : MonoBehaviour
     private void BeforeLoadScene()
     {
         EventSystem.Instance.RemoveListener(EEvent.OnPlayerHealthChange, LoadHealthBar);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, LoadHealthBar);
+        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 }
