@@ -18,18 +18,22 @@ public class DialogueManager : MonoBehaviour
     private Dialogues _dias;
     private void Awake()
     {
-        EventSystem.Instance.AddListener<Dialogues>(EEvent.OnStartDialogue, HandleDialogue);
+        EventSystem.Instance.AddListener<Dialogues>(EEvent.OnstartDialogueWithDialogues, HandleDialogue);
         EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void BeforeLoadScene()
     {
-        EventSystem.Instance.RemoveListener<Dialogues>(EEvent.OnStartDialogue, HandleDialogue);
+        EventSystem.Instance.RemoveListener<Dialogues>(EEvent.OnstartDialogueWithDialogues, HandleDialogue);
         EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void Update()
     {
+        if (!dialogueBox.activeSelf)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0)) // 检测鼠标点击
         {
             if (isTyping)

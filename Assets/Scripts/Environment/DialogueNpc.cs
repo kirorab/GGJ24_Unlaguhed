@@ -8,8 +8,9 @@ public class DialogueNpc : InteractiveObject
     // Start is called before the first frame update
     public override void OnInteract()
     {
-        EventSystem.Instance.Invoke<Dialogues>(EEvent.OnStartDialogue, dias);
-        Debug.Log("interact");
+        EventSystem.Instance.Invoke(EEvent.OnStartDialogue);
+        EventSystem.Instance.Invoke<Dialogues>(EEvent.OnstartDialogueWithDialogues, dias);
+        //Debug.Log("interact");
     }
 
     public override void Update()

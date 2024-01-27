@@ -8,6 +8,7 @@ public enum EEvent
     /// 开始对话时
     /// </summary>
     OnStartDialogue,
+    OnstartDialogueWithDialogues,
     /// <summary>
     /// 结束对话时
     /// </summary>
@@ -28,6 +29,10 @@ public enum EEvent
     /// 弹出乌龟选择框时
     /// </summary>
     OnTurtleChoose,
+    /// <summary>
+    /// 结束乌龟选择,true为放过，false为杀害
+    /// </summary>
+    OnEndTurtleChoose, 
     /// <summary>
     /// 结束与乌龟的战斗时
     /// </summary>
