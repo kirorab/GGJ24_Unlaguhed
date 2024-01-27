@@ -181,4 +181,15 @@ public class Turtle : MonoBehaviour
         EventSystem.Instance.RemoveListener(EEvent.OnStartTurtleBattle, StartAttack);
         EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
+
+    public void Cheat()
+    {
+        foreach (TurtleShell turtleShell in turtleShells)
+        {
+            Destroy(turtleShell.gameObject);
+        }
+        turtleShells.Clear();
+        curStage = 2;
+        GetHurt();
+    }
 }

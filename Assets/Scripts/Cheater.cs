@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Cheater : MonoBehaviour
 {
+    public Turtle turtle;
+
     # if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            EventSystem.Instance.Invoke(EEvent.OnStartPokemonBattle);
+            turtle.Cheat();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
