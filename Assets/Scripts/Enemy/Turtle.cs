@@ -29,6 +29,7 @@ public class Turtle : MonoBehaviour
     private Animator animator;
     private Coroutine currentCoroutine;
     private List<TurtleShell> turtleShells;
+    [SerializeField]
     private bool towardsRight;
     private int curCollisionCount;
     private int curStage;
@@ -43,6 +44,10 @@ public class Turtle : MonoBehaviour
         turtleShells = new List<TurtleShell>();
         curStage = 0;
         killTurtleChoosed = false;
+        TurtleState = ETurtleState.Idle;
+
+        EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, StartAttack);
+        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void Update()
@@ -112,8 +117,8 @@ public class Turtle : MonoBehaviour
             TurtleState = ETurtleState.Weak;
             if (!killTurtleChoosed && curStage == 2)
             {
-                // TODO 绕过乌龟
-                print("绕他一命");
+                // TODO 饶过乌龟
+                print("饶他一命");
                 killTurtleChoosed = true;
             }
             yield return new WaitForSeconds(weakDuration);
@@ -173,5 +178,11 @@ public class Turtle : MonoBehaviour
             }
             towardsRight = !towardsRight;
         }
+    }
+
+    private void BeforeLoadScene()
+    {
+        EventSystem.Instance.RemoveListener(EEvent.OnStartTurtleBattle, StartAttack);
+        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 }

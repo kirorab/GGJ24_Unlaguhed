@@ -43,8 +43,7 @@ public class TurtleShell : MonoBehaviour
         else if (currentState == ETurtleShellState.Moving)
         {
             transform.Translate(moveSpeed * Time.deltaTime * moveDir);
-            // TODO ÐÞ¸Ä²ÎÊý
-            if (transform.position.x < -9.5f ||  transform.position.x > 9.5f)
+            if (transform.position.x < 26f ||  transform.position.x > 47f)
             {
                 Destroy(gameObject);
             }
