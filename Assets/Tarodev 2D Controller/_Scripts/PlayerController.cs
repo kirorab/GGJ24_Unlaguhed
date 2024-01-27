@@ -38,26 +38,28 @@ namespace TarodevController
             _anim = GetComponentInChildren<Animator>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
-            EventSystem.Instance.AddListener<Dialogues>(EEvent.OnStartDialogue, SetCanMoveFalse);
-            EventSystem.Instance.AddListener(EEvent.OnEndDialogue, SetCanMoveTrue);
+            EventSystem.Instance.AddListener(EEvent.OnStartDialogue, PlayerPause);
+            EventSystem.Instance.AddListener(EEvent.OnEndDialogue, PlayerContinue);
             EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
         }
 
         private void BeforeLoadScene()
         {
-            EventSystem.Instance.RemoveListener<Dialogues>(EEvent.OnStartDialogue, SetCanMoveFalse);
-            EventSystem.Instance.RemoveListener(EEvent.OnEndDialogue, SetCanMoveTrue);
+            EventSystem.Instance.RemoveListener(EEvent.OnStartDialogue, PlayerPause);
+            EventSystem.Instance.RemoveListener(EEvent.OnEndDialogue, PlayerContinue);
             EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
         }
 
-        private void SetCanMoveFalse(Dialogues dia)
+        private void PlayerPause()
         {
             CanMove = false;
+            _anim.speed = 0f;
         }
 
-        private void SetCanMoveTrue()
+        private void PlayerContinue()
         {
             CanMove = true;
+            _anim.speed = 1f;
         }
 
         private void Update()
