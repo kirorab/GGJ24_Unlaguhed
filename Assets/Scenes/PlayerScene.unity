@@ -401,6 +401,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &320230449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320230451}
+  - component: {fileID: 320230450}
+  m_Layer: 0
+  m_Name: TestMsg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &320230450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320230449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7892159a4fb22049b9ec25a90d7190e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &320230451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320230449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5069058, y: -0.38798887, z: -0.15405782}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &412543813 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4584411875435829920, guid: 42d990cf8b5c1d84b9e51ee1a409308f, type: 3}
@@ -1073,7 +1117,6 @@ GameObject:
   - component: {fileID: 918194584}
   - component: {fileID: 918194583}
   - component: {fileID: 918194582}
-  - component: {fileID: 918194581}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1102,18 +1145,6 @@ RectTransform:
   m_AnchoredPosition: {x: -320.00003, y: -209.76195}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &918194581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918194579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c06a09346fc9ad4ebde0d99bc99421e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &918194582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,9 +1189,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 918194581}
-        m_TargetAssemblyTypeName: MessageBox, Assembly-CSharp
-        m_MethodName: ShowMessageBox
+      - m_Target: {fileID: 320230450}
+        m_TargetAssemblyTypeName: TestMsg, Assembly-CSharp
+        m_MethodName: ShowMsg
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

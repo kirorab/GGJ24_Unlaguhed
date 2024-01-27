@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bonfire3 : InteractiveObject
+public class Bonfire3 : Bonfire
 {
     private void Awake()
     {
@@ -20,7 +20,13 @@ public class Bonfire3 : InteractiveObject
 
     public override void OnInteract()
     {
-
+        base.OnInteract();
+        PlayerInfo.Instance.TakeDamage(1);
+    }
+    private void Update()
+    {
+        BaseUpdate();
+        
     }
 
     private void BeforeLoadScene()

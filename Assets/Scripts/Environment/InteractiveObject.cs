@@ -4,8 +4,8 @@ using UnityEngine;
 public abstract class InteractiveObject : MonoBehaviour
 {
     public GameObject hint;
-    private bool isPlayerNearBy;
-    private bool isInteracted;
+    protected bool isPlayerNearBy;
+    protected bool isInteracted;
     public abstract void OnInteract();
 
     private void Start()
@@ -15,6 +15,10 @@ public abstract class InteractiveObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (isInteracted)
+        {
+            return;
+        }
         if (other.gameObject.tag == "Player")
         {
             isPlayerNearBy = true;
@@ -31,10 +35,12 @@ public abstract class InteractiveObject : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected void BaseUpdate()
     {
         if (isPlayerNearBy && !isInteracted && Input.GetKeyDown(KeyCode.E))
         {
+            //Debug.Log("interact");
+            hint.SetActive(false);
             OnInteract();
             isInteracted = true;
         }
