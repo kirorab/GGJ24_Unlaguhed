@@ -134,7 +134,7 @@ MonoBehaviour:
   collisionCounts: 0300000005000000
   moveSpeed: 3
   rushSpeed: 8
-  followSpeed: 6
+  followSpeed: 5
   followDist: 2
 --- !u!50 &5433014996436530445
 Rigidbody2D:

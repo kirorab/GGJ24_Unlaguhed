@@ -33,6 +33,7 @@ public class PlayerInfo : Singleton<PlayerInfo>
 
     private void BeforeLoadScene()
     {
+        Destroy(gameObject);
         _instance = null;
         EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
