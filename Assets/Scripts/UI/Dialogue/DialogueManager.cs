@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     private Dialogues _dias;
     private void Awake()
     {
-        dialogueBox.SetActive(true);
+        dialogueBox.SetActive(false);
         EventSystem.Instance.AddListener<Dialogues>(EEvent.OnstartDialogueWithDialogues, HandleDialogue);
         EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
