@@ -4,7 +4,10 @@ public enum EEvent
     /// 玩家血条改变时
     /// </summary>
     OnPlayerHealthChange,
-    
+    /// <summary>
+    /// 存档失败
+    /// </summary>
+    OnSaveFailed,
     /// <summary>
     /// 切换场景前
     /// </summary>

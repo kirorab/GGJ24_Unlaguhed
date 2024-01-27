@@ -895,6 +895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: {fileID: 296150046}
+  fire: {fileID: 21300000, guid: feab5d9ef43924048959bb9b910a266d, type: 3}
+  blockLength: 2.25
 --- !u!61 &80360032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1142,7 +1144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114715375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21529198, y: -0.05859995, z: -10}
+  m_LocalPosition: {x: -0.20600176, y: -0.05859995, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4518,6 +4520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: {fileID: 1343291553}
+  fire: {fileID: 0}
+  blockLength: 2.25
 --- !u!61 &517885595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5473,7 +5477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650765123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.284708, y: -1.8314, z: 0}
+  m_LocalPosition: {x: -4.2939982, y: -1.8314, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7288,7 +7292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: 0
   destination: {fileID: 98729195}
-  player: {fileID: 721961365}
 --- !u!61 &923097968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12793,6 +12796,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: {fileID: 389239992}
+  fire: {fileID: 0}
+  blockLength: 2.25
 --- !u!61 &1797804007
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13376,7 +13381,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: 0
   destination: {fileID: 133149367}
-  player: {fileID: 721961365}
 --- !u!61 &1850366007
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15953,6 +15957,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2736561163788013975, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2863479269553216544, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -15984,6 +15992,10 @@ PrefabInstance:
     - target: {fileID: 6514071883811938492, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514071883811938492, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6514071883811938492, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
       propertyPath: m_TagString
@@ -16036,6 +16048,10 @@ PrefabInstance:
     - target: {fileID: 6535894759767606056, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737787474421798723, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6737787474421798723, guid: 19a7170626ca680489d5a2b442d0db7f, type: 3}
       propertyPath: m_TagString

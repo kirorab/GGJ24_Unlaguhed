@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cheater : MonoBehaviour
 {
+    # if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -19,4 +20,5 @@ public class Cheater : MonoBehaviour
             EventSystem.Instance.Invoke(EEvent.OnEndPokemonBattle);
         }
     }
+    # endif
 }

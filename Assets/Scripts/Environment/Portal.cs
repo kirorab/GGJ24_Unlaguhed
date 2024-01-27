@@ -7,12 +7,13 @@ public class Portal : MonoBehaviour
 {
     public bool right;
     public Transform destination;
-    public Transform player;
+    private Transform player;
 
     private void Awake()
     {
         EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, RemovePortalTrigger);
         EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
+        player = PlayerInfo.Instance.GetPlayerPosition();
     }
 
     private void RemovePortalTrigger()
