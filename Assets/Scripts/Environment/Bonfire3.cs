@@ -6,6 +6,7 @@ public class Bonfire3 : Bonfire
 {
     private void Awake()
     {
+        base.Awake();
         EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, ShowSelf);
         EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }

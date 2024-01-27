@@ -8,4 +8,8 @@ public class SignBoard : InteractiveObject
     {
 
     }
+
+    public override void Update()
+    {
+    }
 }

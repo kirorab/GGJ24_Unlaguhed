@@ -11,7 +11,7 @@ public class Bonfire : InteractiveObject
     private SpriteRenderer _sprite;
     private Transform _transform;
     [SerializeField] private float blockLength = 2.25f;
-    private void Awake()
+    protected void Awake()
     {
         _sprite = GetComponent<SpriteRenderer>();
         _transform = GetComponent<Transform>();
@@ -23,18 +23,18 @@ public class Bonfire : InteractiveObject
         //Debug.Log("interact");
         _sprite.sprite = fire;
         var vector3 = transform.position;
-        vector3.y += 1;
+        vector3.y += 0.5f;
         transform.position = vector3;
         transform.localScale = new Vector3(0.75f, 0.75f, 1);
         isInteracted = true;
     }
 
-    private void Update()
+    public override void Update()
     {
         BaseUpdate();
         if (isInteracted)
         {
-            if (PlayerInfo.Instance.GetPlayerPosition().position.x - _transform.position.x > 2 * blockLength)
+            if (Math.Abs(PlayerInfo.Instance.GetPlayerPosition().position.x - _transform.position.x) > 2 * blockLength)
             {
                 Extinct();
             }
@@ -45,6 +45,10 @@ public class Bonfire : InteractiveObject
     {
         _sprite.sprite = _extinct;
         isInteracted = false;
+        var vector3 = transform.position;
+        vector3.y -= 0.5f;
+        transform.position = vector3;
+        transform.localScale = new Vector3(1/0.75f, 1/0.75f, 1);
         EventSystem.Instance.Invoke(EEvent.OnSaveFailed);
     }
 }

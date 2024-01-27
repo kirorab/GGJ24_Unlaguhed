@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public abstract class InteractiveObject : MonoBehaviour
 {
@@ -46,4 +47,6 @@ public abstract class InteractiveObject : MonoBehaviour
         }
         
     }
+
+    public abstract void Update();
 }
