@@ -12,7 +12,6 @@ public class CameraController : MonoBehaviour
 
     public Transform turtleBattleCenter;
     public Transform pokemonBattleCenter;
-    public Transform playerTransform;
 
     private void Awake()
     {
@@ -44,8 +43,7 @@ public class CameraController : MonoBehaviour
 
     private void RestoreCamera()
     {
-        // TODO Íæ¼Ò¾µÍ·ÇÐ»»
-        virCam.Follow = playerTransform;
+        virCam.Follow = PlayerInfo.Instance.transform;
     }
 
     private void BeforeLoadScene()

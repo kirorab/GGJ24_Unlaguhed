@@ -136,17 +136,32 @@ namespace TarodevController
         {
             if (collision.gameObject.CompareTag("Enemy")) // 或者使用Layer来检测
             {
-                foreach (ContactPoint2D point in collision.contacts)
+                if (collision.gameObject.TryGetComponent<Turtle>(out var turtle))
                 {
-                    if (point.normal.y >= 0.5f) // 确保是从上方碰到敌人
+                    if (turtle.TurtleState == ETurtleState.Weak)
                     {
-                        // 玩家踩到了敌人
-                        Debug.Log("Jump on enemy");
-                        PerformBounce();
-                        EnemyJumpedOn(collision.gameObject);
+                        foreach (ContactPoint2D point in collision.contacts)
+                        {
+                            if (point.normal.y >= 0.5f) // 确保是从上方碰到敌人
+                            {
+                                // 玩家踩到了乌龟
+                                PerformBounce();
+                                turtle.GetHurt();
+                                return;
+                            }
+                        }
+                    }
+                    else if (turtle.TurtleState == ETurtleState.RetractShell)
+                    {
+                        turtle.GetShellPushed();
                         return;
                     }
                 }
+                else if (collision.gameObject.TryGetComponent<TurtleShell>(out var turtleShell))
+                {
+                    Destroy(turtleShell.gameObject);
+                }
+
                 //玩家以非跳踩的形式接触到敌人
                 PlayerInfo.Instance.TakeDamage(1);
             }
@@ -156,21 +171,6 @@ namespace TarodevController
         {
             ExecuteJump(_stats.bounceForce);
         }
-
-        private void EnemyJumpedOn(GameObject enemy)
-        {
-            // 使敌人掉落的逻辑
-            var enemyCollider = enemy.GetComponent<Collider2D>();
-            if (enemyCollider != null)
-            {
-                enemyCollider.enabled = false;
-            }
-
-            // 可以设置一个延时后销毁敌人对象
-            Destroy(enemy, 2f); // 2秒后销毁敌人
-            // 例如：Destroy(enemy); 或者播放敌人消失的动画
-        }
-        
 
         #endregion
         
