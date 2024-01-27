@@ -1,11 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Base;
+using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -14,7 +11,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void ExitGame()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 
     public void StartGame()
@@ -22,8 +23,6 @@ public class MainMenuManager : MonoBehaviour
         FadeOut();
     }
     
-    
-
     public void FadeOut()
     {
         StartCoroutine(FadeOutCoroutine());

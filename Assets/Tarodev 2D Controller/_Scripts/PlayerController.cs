@@ -17,6 +17,7 @@ namespace TarodevController
         [SerializeField] private ScriptableStats _stats;
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
+        private Animator _anim;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
@@ -35,6 +36,7 @@ namespace TarodevController
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
+            _anim = GetComponentInChildren<Animator>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
@@ -43,6 +45,7 @@ namespace TarodevController
         {
             _time += Time.deltaTime;
             GatherInput();
+            UpdateAnim();
         }
 
         private void GatherInput()
@@ -67,6 +70,19 @@ namespace TarodevController
             }
         }
 
+        private void UpdateAnim()
+        {
+            if (_frameInput.Move.x == 0)
+            {
+                _anim.Play("standby");
+            }
+            else
+            {
+                _anim.Play("run");
+                transform.localScale = new Vector3(_frameInput.Move.x, 1f);
+            }
+        }
+        
         private void FixedUpdate()
         {
             CheckCollisions();
