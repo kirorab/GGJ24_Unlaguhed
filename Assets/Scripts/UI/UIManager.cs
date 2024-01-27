@@ -44,8 +44,9 @@ public class UIManager : Singleton<UIManager>
 
     public void ForgiveTurtle(bool isForgive)
     {
-        EventSystem.Instance.Invoke<bool>(EEvent.OnTurtleChoose, isForgive);
+        EventSystem.Instance.Invoke<bool>(EEvent.OnEndTurtleChoose, isForgive);
         TurtleChoose.SetActive(false);
+        SetDandCbgActiveFalse();
     }
 
     private void SetDandCbgActiveTrue()

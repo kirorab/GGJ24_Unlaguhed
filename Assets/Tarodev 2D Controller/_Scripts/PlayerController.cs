@@ -40,12 +40,20 @@ namespace TarodevController
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             EventSystem.Instance.AddListener(EEvent.OnStartDialogue, PlayerPause);
             EventSystem.Instance.AddListener(EEvent.OnEndDialogue, PlayerContinue);
+            EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, PlayerPause);
+            EventSystem.Instance.AddListener<bool>(EEvent.OnEndTurtleChoose, (bool isForgive) => PlayerContinue());
         }
 
         private void PlayerPause()
         {
             CanMove = false;
             _anim.speed = 0f;
+            _frameInput = new FrameInput
+            {
+                JumpDown = false,
+                JumpHeld = false,
+                Move = Vector2.zero
+            };
         }
 
         private void PlayerContinue()
