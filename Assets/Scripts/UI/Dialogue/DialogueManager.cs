@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     private Dialogues _dias;
     private void Awake()
     {
+        dialogueBox.SetActive(true);
         EventSystem.Instance.AddListener<Dialogues>(EEvent.OnstartDialogueWithDialogues, HandleDialogue);
         EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
@@ -67,7 +68,7 @@ public class DialogueManager : MonoBehaviour
     
     public void StartTyping(DialogueNode diaNode)
     {
-        currentText = diaNode.speaker + " :" + diaNode.content;
+        currentText = diaNode.content;
         StartCoroutine(TypeText());
     }
 
