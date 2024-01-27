@@ -40,14 +40,6 @@ namespace TarodevController
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             EventSystem.Instance.AddListener(EEvent.OnStartDialogue, PlayerPause);
             EventSystem.Instance.AddListener(EEvent.OnEndDialogue, PlayerContinue);
-            EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
-        }
-
-        private void BeforeLoadScene()
-        {
-            EventSystem.Instance.RemoveListener(EEvent.OnStartDialogue, PlayerPause);
-            EventSystem.Instance.RemoveListener(EEvent.OnEndDialogue, PlayerContinue);
-            EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
         }
 
         private void PlayerPause()

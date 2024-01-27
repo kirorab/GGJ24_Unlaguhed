@@ -8,8 +8,9 @@ public sealed class EventSystem : Singleton<EventSystem>
     private Dictionary<EEvent, Type> typeDict;
     private Dictionary<EEvent, Delegate> eventDict;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         typeDict = new Dictionary<EEvent, Type>();
         eventDict = new Dictionary<EEvent, Delegate>();
     }

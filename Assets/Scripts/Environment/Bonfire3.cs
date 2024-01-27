@@ -8,7 +8,6 @@ public class Bonfire3 : Bonfire
     {
         base.Awake();
         EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, ShowSelf);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void ShowSelf()
@@ -28,11 +27,5 @@ public class Bonfire3 : Bonfire
     public override void Update()
     {
         BaseUpdate();
-    }
-
-    private void BeforeLoadScene()
-    {
-        EventSystem.Instance.RemoveListener(EEvent.OnEndPokemonBattle, ShowSelf);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 }

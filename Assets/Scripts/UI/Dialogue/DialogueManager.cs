@@ -20,13 +20,6 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueBox.SetActive(true);
         EventSystem.Instance.AddListener<Dialogues>(EEvent.OnstartDialogueWithDialogues, HandleDialogue);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
-    }
-
-    private void BeforeLoadScene()
-    {
-        EventSystem.Instance.RemoveListener<Dialogues>(EEvent.OnstartDialogueWithDialogues, HandleDialogue);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void Update()

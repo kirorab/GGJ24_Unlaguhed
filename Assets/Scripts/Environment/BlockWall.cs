@@ -6,7 +6,6 @@ public class BlockWall : MonoBehaviour
     private void Awake()
     {
         EventSystem.Instance.AddListener(EEvent.OnEndTurtleBattle, RemoveBlockWall);
-        EventSystem.Instance.AddListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 
     private void RemoveBlockWall()
@@ -25,11 +24,5 @@ public class BlockWall : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-    }
-
-    private void BeforeLoadScene()
-    {
-        EventSystem.Instance.RemoveListener(EEvent.OnEndTurtleBattle, RemoveBlockWall);
-        EventSystem.Instance.RemoveListener(EEvent.BeforeLoadScene, BeforeLoadScene);
     }
 }
