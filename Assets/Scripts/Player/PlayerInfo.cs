@@ -44,6 +44,8 @@ public class PlayerInfo : Singleton<PlayerInfo>
             return;
         }
         isInvincible = true;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("TurtleShell"), true);
         invincibleTimer = invincibleTime;
         health -= change;
         FlashEffect();
@@ -75,6 +77,8 @@ public class PlayerInfo : Singleton<PlayerInfo>
             if (invincibleTimer <= 0)
             {
                 isInvincible = false;
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), false);
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("TurtleShell"), false);
                 SetNormalAppearance();
             }
         }
