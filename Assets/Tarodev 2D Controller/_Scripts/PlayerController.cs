@@ -20,7 +20,7 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
-
+        private bool CanMove = true;
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -31,18 +31,31 @@ namespace TarodevController
 
         private float _time;
 
+        
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _col = GetComponent<CapsuleCollider2D>();
             _anim = GetComponentInChildren<Animator>();
-
+            
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
+            EventSystem.Instance.AddListener(EEvent.OnStartDialogue, ((Dialogues dia) => CanMove = false));
+            EventSystem.Instance.AddListener(EEvent.OnEndDialogue, (() => CanMove = true));
+        }
+
+        private void OnDestroy()
+        {
+            EventSystem.Instance.RemoveListener(EEvent.OnStartDialogue, ((Dialogues dia) => CanMove = false));
+            EventSystem.Instance.RemoveListener(EEvent.OnEndDialogue, (() => CanMove = true));
         }
 
         private void Update()
         {
             _time += Time.deltaTime;
+            if (!CanMove)
+            {
+                return;
+            }
             GatherInput();
             UpdateAnim();
         }
