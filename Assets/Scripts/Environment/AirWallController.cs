@@ -26,7 +26,6 @@ public class AirWallController : MonoBehaviour
             {
                 trigger.enabled = true;
             }
-            print(cameraCollider.points[0]);
             cameraCollider.points = new Vector2[]
             {
                 new Vector2(-20, cameraCollider.points[0].y),
@@ -35,7 +34,6 @@ public class AirWallController : MonoBehaviour
                 new Vector2(-20, cameraCollider.points[3].y)
             };
             Camera.main.GetComponentInChildren<CinemachineConfiner2D>().InvalidateCache();
-            print(cameraCollider.points[0]);
         }
     }
 }
