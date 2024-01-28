@@ -27,10 +27,7 @@ public class PokemonUI : MonoBehaviour
 
     
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void AddEnergy(int mount)
     {
@@ -40,7 +37,7 @@ public class PokemonUI : MonoBehaviour
         }
     }
 
-    public void UseEnergy(int mount)
+    public void RemoveEnergy(int mount)
     {
         for (int i = 0; i < mount; i++)
         {
@@ -60,5 +57,10 @@ public class PokemonUI : MonoBehaviour
         
         var parentTrans = energyBar.transform;
         Destroy(parentTrans.GetChild(parentTrans.childCount - 1).gameObject);
+    }
+
+    public void UpdateHealthBar(float curHp, float maxHp)
+    {
+        healthBar.transform.localScale = new Vector3(curHp / maxHp, 1, 1);
     }
 }
