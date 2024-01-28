@@ -53,6 +53,8 @@ public enum EEvent
     OnKoopaTurnStart,
     OnAppleHitPikachu,
     OnPikachuTurnStart,
+    OnKoopaAttack,
+    OnPikachuAttack,
     /// <summary>
     /// 结束与宝可梦的战斗时
     /// </summary>

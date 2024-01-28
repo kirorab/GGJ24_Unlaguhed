@@ -54,14 +54,17 @@ public class BattleController : MonoBehaviour
         {
             case 0:
                 marioTurtle.NormalAttack(pikachu);
+                EventSystem.Instance.Invoke(EEvent.OnKoopaAttack);
                 break;
             case 1:
                 marioTurtle.ShellDefense();
                 break;
             case 2:
                 marioTurtle.ShellRush(pikachu);
+                EventSystem.Instance.Invoke(EEvent.OnKoopaAttack);
                 break;
         }
+        AudioManager.Instance.PlayAudio(AudioType.KickOrImpact);
         canEndTurn = true;
     }
     
@@ -103,6 +106,8 @@ public class BattleController : MonoBehaviour
                 turn = 0;
                 break;
         }
+        AudioManager.Instance.PlayAudio(AudioType.ElectricShock);
+        EventSystem.Instance.Invoke(EEvent.OnPikachuAttack);
     }
 
     
