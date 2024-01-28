@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,38 +14,64 @@ public class PokemonUI : MonoBehaviour
     public Image healthBar;
     public GameObject energyBar;
     public GameObject energyPointPrefab;
+    public PokemonInfo _PokemonInfo;
     
-    
+    protected virtual void Awake()
+    {
+        EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, Init);
+        EventSystem.Instance.AddListener<Pokemon, float>(EEvent.OnPokemonHealthChange, UpdateHealthBar);
+        EventSystem.Instance.AddListener<Pokemon, int>(EEvent.OnPokemonEnergyChange, ChangeEnergy);
+    }
 
-    public void Init(String nameText, Sprite s, int maxEnergy)
+    public virtual void Init()
     {
         name = GetComponentInChildren<TMP_Text>();
-        name.text = nameText;
-        pokemonImage.sprite = s;
+        name.text = _PokemonInfo.name;
+        pokemonImage.sprite = _PokemonInfo.pokemonImage;
         
-        AddEnergy(maxEnergy);
+        AddEnergy(_PokemonInfo.maxEnergy);
     }
 
+
+    public virtual void JudgeEnergy(int cur)
+    {
+        
+    }
+
+    public virtual void EnableSkill() { }
+    public virtual void DisableSkill() { }
+    
     
     // Update is called once per frame
-    void Update()
+    public void ChangeEnergy(Pokemon p, int change)
     {
-        
+        if (p != _PokemonInfo.pokemon)
+        {
+            return;
+        }
+        if (change > 0)
+        {
+            AddEnergy(change);
+        }
+        else
+        {
+            RemoveEnergy(-change);
+        }
     }
 
-    public void AddEnergy(int mount)
+    public void AddEnergy(int amount)
     {
-        for (int i = 0; i < mount; i++)
+        for (int i = 0; i < amount; i++)
         {
             EnergyPlus();
         }
     }
 
-    public void UseEnergy(int mount)
+    public void RemoveEnergy(int amount)
     {
-        for (int i = 0; i < mount; i++)
+        for (int i = 0; i < amount; i++)
         {
-            EnergyMinus();
+            EnergyMinus(i);
         }
     }
 
@@ -55,10 +82,22 @@ public class PokemonUI : MonoBehaviour
     }
     
 
-    private void EnergyMinus()
+    private void EnergyMinus(int i)
     {
         
         var parentTrans = energyBar.transform;
-        Destroy(parentTrans.GetChild(parentTrans.childCount - 1).gameObject);
+        if (parentTrans.childCount > 0)
+        {
+            Destroy(parentTrans.GetChild(i).gameObject);
+        }
+    }
+
+    public void UpdateHealthBar(Pokemon p, float curHp)
+    {
+        if (p != _PokemonInfo.pokemon)
+        {
+            return;
+        }
+        healthBar.transform.localScale = new Vector3(curHp / _PokemonInfo.maxHealth, 1, 1);
     }
 }

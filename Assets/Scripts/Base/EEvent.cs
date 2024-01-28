@@ -46,10 +46,12 @@ public enum EEvent
     /// </summary>
     OnStartPokemonBattle,
     /// <summary>
-    /// 宝可梦的血量和能量变化时，传递两个参数，第一个为数值，第二个为宝可梦
+    /// 宝可梦的血量和能量变化时，传递两个参数，第一个为变化的数值，第二个为宝可梦
     /// </summary>
     OnPokemonHealthChange,
     OnPokemonEnergyChange,
+    OnKoopaTurnStart,
+    OnPikachuTurnStart,
     /// <summary>
     /// 结束与宝可梦的战斗时
     /// </summary>
