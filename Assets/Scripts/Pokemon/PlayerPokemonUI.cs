@@ -78,7 +78,7 @@ public class PlayerPokemonUI : PokemonUI
     public override void Init()
     {
         base.Init();
-        Debug.Log("player init");
+        //Debug.Log("player init");
         for (int i = 0; i < 3; i++)
         {
             DrawButton(SkillButtons[i], SkillMaterials[i]);
@@ -102,7 +102,7 @@ public class PlayerPokemonUI : PokemonUI
         var childIcon = b.transform.Find("SkillIcon");
         childIcon.GetComponent<Image>().sprite = m.icon;
         var childDescription = b.transform.Find("Description");
-        Debug.Log(childDescription.name + " " + childDescription.GetComponentInChildren<TMP_Text>().gameObject.name);
+        //Debug.Log(childDescription.name + " " + childDescription.GetComponentInChildren<TMP_Text>().gameObject.name);
         childDescription.GetComponentInChildren<TMP_Text>().text = m.description;
     }
 }
