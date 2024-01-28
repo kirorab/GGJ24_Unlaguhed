@@ -17,6 +17,11 @@ public class Cheater : MonoBehaviour
         {
             EventSystem.Instance.Invoke(EEvent.OnEndPokemonBattle);
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            int userChoose = ChinarMessage.ShowMsg("Unlaugh 未响应\n是否关闭该程序？", "Unlaugh");
+            print(userChoose);
+        }
     }
     # endif
 }

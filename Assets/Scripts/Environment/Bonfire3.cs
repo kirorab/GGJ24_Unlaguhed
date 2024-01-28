@@ -22,6 +22,7 @@ public class Bonfire3 : Bonfire
     {
         base.OnInteract();
         PlayerInfo.Instance.TakeDamage(1);
+        UIManager.Instance.GetAchivement();
     }
 
     public override void Update()

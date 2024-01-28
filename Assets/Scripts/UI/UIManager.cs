@@ -8,6 +8,7 @@ using UnityEngine.Video;
 public class UIManager : Singleton<UIManager>
 {
     public GameObject SaveFailed;
+    public GameObject Achivement;
     public GameObject DandCbg;
     public GameObject TurtleChoose;
     public GameObject laughChoose;
@@ -21,6 +22,7 @@ public class UIManager : Singleton<UIManager>
     {
         base.Awake();
         SaveFailed.SetActive(false);
+        Achivement.SetActive(false);
         DandCbg.SetActive(false);
         TurtleChoose.SetActive(false);
         whoIAm.gameObject.SetActive(false);
@@ -52,10 +54,9 @@ public class UIManager : Singleton<UIManager>
     }
 #endif
 
-    // Start is called before the first frame update
     public void HandleSaveFailed()
     {
-        Debug.Log("save failed");
+        //Debug.Log("save failed");
         SaveFailed.SetActive(true);
         StartCoroutine(Wait(2));
     }
@@ -70,6 +71,18 @@ public class UIManager : Singleton<UIManager>
     {
         yield return new WaitForSeconds(seconds);
         SaveFailed.SetActive(false);
+    }
+
+    public void GetAchivement()
+    {
+        Achivement.SetActive(true);
+        StartCoroutine(Wait2(2));
+    }
+
+    private IEnumerator Wait2(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Achivement.SetActive(false);
     }
 
     public void ForgiveTurtle(bool isForgive)
