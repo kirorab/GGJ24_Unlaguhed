@@ -12,6 +12,8 @@ public class UIManager : Singleton<UIManager>
     public GameObject DandCbg;
     public GameObject TurtleChoose;
     public GameObject laughChoose;
+    public GameObject PokemonBattle;
+    public GameObject HUD;
     public VideoPlayer whoIAm;
     public VideoPlayer closingCredits;
     public Sprite muteSprite;
@@ -27,6 +29,7 @@ public class UIManager : Singleton<UIManager>
         TurtleChoose.SetActive(false);
         whoIAm.gameObject.SetActive(false);
         closingCredits.gameObject.SetActive(false);
+        PokemonBattle.SetActive(false);
         EventSystem.Instance.AddListener(EEvent.OnSaveFailed, HandleSaveFailed);
         EventSystem.Instance.AddListener(EEvent.OnStartDialogue, SetDandCbgActiveTrue);
         EventSystem.Instance.AddListener(EEvent.OnEndDialogue, SetDandCbgActiveFalse);
@@ -35,6 +38,10 @@ public class UIManager : Singleton<UIManager>
         EventSystem.Instance.AddListener(EEvent.OnLaughChoose, HandleLaughChoose);
         closingCredits.loopPointReached += (VideoPlayer _) => ReturnToMenuScene();
         EventSystem.Instance.AddListener<bool>(EEvent.OnToggleMute, OnToggleMute);
+        EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, () => PokemonBattle.SetActive(true));
+        EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, () => HUD.SetActive(false));
+        EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, () => PokemonBattle.SetActive(false));
+        EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, () => HUD.SetActive(true));
     }
 
 #if UNITY_EDITOR

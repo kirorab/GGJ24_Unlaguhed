@@ -46,6 +46,10 @@ namespace TarodevController
             EventSystem.Instance.AddListener<bool>(EEvent.OnEndTurtleChoose, (bool isForgive) => PlayerContinue());
             EventSystem.Instance.AddListener(EEvent.OnLaughChoose, PlayerPause);
             EventSystem.Instance.AddListener<bool>(EEvent.OnEndLaughChoose, (bool laugh) => PlayerContinue());
+            EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, PlayerPause);
+            EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, (() => transform.Find("主角").gameObject.SetActive(false)));
+            EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, PlayerContinue);
+            EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, (() => transform.Find("主角").gameObject.SetActive(true)));
         }
 
         private void PlayerPause()
