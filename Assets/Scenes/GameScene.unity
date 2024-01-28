@@ -1271,7 +1271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114715375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21529198, y: -0.05859995, z: -10}
+  m_LocalPosition: {x: -0.20952988, y: -0.05859995, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6131,7 +6131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650765123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.284708, y: -1.8314, z: 0}
+  m_LocalPosition: {x: -4.29047, y: -1.8314, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14804,8 +14804,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.0515, y: -2.5}
-  m_SizeDelta: {x: -14.103, y: -21.267}
+  m_AnchoredPosition: {x: 4.5, y: -2.9}
+  m_SizeDelta: {x: -30.036, y: -21.267}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1837914967
 MonoBehaviour:
@@ -14827,7 +14827,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6218\u6597 \uFF0C\u723D\uFF01"
+  m_text: "\u6B8B\u5FCD\u62D2\u7EDD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 162376f6c0fe34e42adc7b2dfe6500e3, type: 2}
   m_sharedMaterial: {fileID: 7709862155851813691, guid: 162376f6c0fe34e42adc7b2dfe6500e3, type: 2}
