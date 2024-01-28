@@ -8,7 +8,7 @@ public class BlockWall : MonoBehaviour
         EventSystem.Instance.AddListener(EEvent.OnEndTurtleBattle, RemoveBlockWall);
     }
 
-    private void RemoveBlockWall()
+    public void RemoveBlockWall()
     {
         StartCoroutine(DoMove());
     }

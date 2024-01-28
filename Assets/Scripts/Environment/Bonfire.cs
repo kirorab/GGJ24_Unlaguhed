@@ -27,6 +27,7 @@ public class Bonfire : InteractiveObject
         transform.position = vector3;
         transform.localScale = new Vector3(0.75f, 0.75f, 1);
         isInteracted = true;
+        AudioManager.Instance.PlayAudio(AudioType.Fireborn);
     }
 
     public override void Update()

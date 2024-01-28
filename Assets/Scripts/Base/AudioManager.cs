@@ -17,6 +17,7 @@ public enum AudioType
     KickOrImpact,
     ElectricShock,
     PikachuShout,
+    Fireborn,
 }
 
 public class AudioManager : Singleton<AudioManager>
@@ -31,6 +32,7 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip kickOrImpactClip;
     public AudioClip electricShockClip;
     public AudioClip pikachuShoutClip;
+    public AudioClip firebornClip;
 
     private Dictionary<BGMType, AudioClip> bgms;
     private AudioSource bgmAudioSource;
@@ -75,6 +77,10 @@ public class AudioManager : Singleton<AudioManager>
         pikachuShoutAudioSource.clip = pikachuShoutClip;
         pikachuShoutAudioSource.loop = false;
         audioSources[AudioType.PikachuShout] = pikachuShoutAudioSource;
+        AudioSource firebornAudioSource = gameObject.AddComponent<AudioSource>();
+        firebornAudioSource.clip = firebornClip;
+        firebornAudioSource.loop = false;
+        audioSources[AudioType.Fireborn] = firebornAudioSource;
 
         EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, () => PlayerInfo.Instance.GetComponent<PlayerController>().Jumped += PlayJumpAudio);
         EventSystem.Instance.AddListener(EEvent.OnEndTurtleBattle, () => PlayerInfo.Instance.GetComponent<PlayerController>().Jumped -= PlayJumpAudio);
