@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CharacterRotateController : CharacterBugController
 {
-    public float spasmDuration = 0.1f;
-    public float spasmIntensity = 0.5f;
+    public float rotateSpeed = 500f;
 
     private void Start()
     {
@@ -14,23 +13,19 @@ public class CharacterRotateController : CharacterBugController
 
     public override void StartBugging()
     {
-        StartCoroutine(SpasmCoroutine());
+        StartCoroutine(RotateCoroutine());
     }
 
-    private IEnumerator SpasmCoroutine()
+    private IEnumerator RotateCoroutine()
     {
-        Vector3 originalPosition = transform.position;
         while (true)
         {
-            // 随机生成偏移值
-            Vector3 spasmOffset = new Vector3(Random.Range(-spasmIntensity, spasmIntensity), 
-                Random.Range(-spasmIntensity, spasmIntensity));
-
             // 应用偏移值
-            transform.position = originalPosition + spasmOffset;
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 
+                transform.localEulerAngles.y, transform.localEulerAngles.z + rotateSpeed * Time.deltaTime);
 
             // 等待一段时间
-            yield return new WaitForSeconds(spasmDuration);
+            yield return null;
         }
     }
 }
