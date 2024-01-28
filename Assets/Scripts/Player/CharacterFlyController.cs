@@ -22,6 +22,7 @@ public class CharacterFlyController : CharacterBugController
         {
             // 应用偏移值
             transform.Translate(0, flySpeed * Time.deltaTime, 0, Space.World);
+            if (transform.position.y > 7f) transform.position = new Vector3(transform.position.x, -7f, 0);
 
             // 等待一段时间
             yield return null;
