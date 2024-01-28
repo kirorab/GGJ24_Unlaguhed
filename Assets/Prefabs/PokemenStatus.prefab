@@ -104,10 +104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a3a1a818b63224a88c0d4b66079cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokemonInfo: {fileID: 0}
+  pokemonInfo: {fileID: 11400000, guid: ab97fe72021ac5548a4e911b98825f0d, type: 2}
   pokemonImage: {fileID: 996361919999156111}
   healthBar: {fileID: 996361920809899186}
   energyBar: {fileID: 996361920141269496}
+  energyPointPrefab: {fileID: 3559040674983236489, guid: eae108a1f9c3e654cbe01ab460ee6ebf, type: 3}
   defense: 0
   health: 0
   energy: 0

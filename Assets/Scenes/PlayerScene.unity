@@ -1422,7 +1422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7963379432584966669, guid: e96f0901cd697174b837406795d27da5, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7963379432584966669, guid: e96f0901cd697174b837406795d27da5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1970,6 +1970,10 @@ PrefabInstance:
       propertyPath: pokemonInfo
       value: 
       objectReference: {fileID: 11400000, guid: ab97fe72021ac5548a4e911b98825f0d, type: 2}
+    - target: {fileID: 2968263536041031291, guid: e96f0901cd697174b837406795d27da5, type: 3}
+      propertyPath: energyPointPrefab
+      value: 
+      objectReference: {fileID: 3559040674983236489, guid: eae108a1f9c3e654cbe01ab460ee6ebf, type: 3}
     - target: {fileID: 7963379432584966669, guid: e96f0901cd697174b837406795d27da5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
