@@ -13,6 +13,7 @@ public class PokemonBattleField : MonoBehaviour
     {
         EventSystem.Instance.AddListener<bool>(EEvent.OnEndTurtleChoose, arg0 => IsBlank = !arg0);
         EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, HandleBattleStart);
+        EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, (() => koopa.SetActive(false)));
         apple.SetActive(false);
         koopa.SetActive(false);
     }

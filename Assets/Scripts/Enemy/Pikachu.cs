@@ -26,7 +26,14 @@ public class Pikachu : InteractiveObject
         if (other.gameObject.tag == "Apple")
         {
             EventSystem.Instance.Invoke(EEvent.OnAppleHitPikachu);
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            StartCoroutine(Wait(2));
+            EventSystem.Instance.Invoke(EEvent.OnEndPokemonBattle);
         }
+    }
+    
+    IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 }
