@@ -102,6 +102,7 @@ public class PlayerPokemonUI : PokemonUI
         var childIcon = b.transform.Find("SkillIcon");
         childIcon.GetComponent<Image>().sprite = m.icon;
         var childDescription = b.transform.Find("Description");
+        Debug.Log(childDescription.name + " " + childDescription.GetComponentInChildren<TMP_Text>().gameObject.name);
         childDescription.GetComponentInChildren<TMP_Text>().text = m.description;
     }
 }

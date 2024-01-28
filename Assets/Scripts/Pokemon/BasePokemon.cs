@@ -18,7 +18,7 @@ public class BasePokemon : MonoBehaviour
     {
         defense = pokemonInfo.maxDefense;
         health = pokemonInfo.maxHealth;
-        energy = pokemonInfo.maxEnergy;
+        energy = 0;
     }
 
     public void TakeDamage(int d)

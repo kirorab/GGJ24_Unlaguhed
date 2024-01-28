@@ -44,7 +44,7 @@ public class BattleController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Pikachu Wins!");
+            EventSystem.Instance.Invoke<bool>(EEvent.OnEndTurtleChoose, false);
         }
     }
 
