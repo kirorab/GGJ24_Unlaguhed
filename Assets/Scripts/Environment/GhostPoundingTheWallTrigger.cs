@@ -1,4 +1,3 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +9,7 @@ public class GhostPoundingTheWallTrigger : MonoBehaviour
 
     private void Awake()
     {
-        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, restoreRenderers);
+        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, RestoreRenderers);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,10 +26,10 @@ public class GhostPoundingTheWallTrigger : MonoBehaviour
             col.enabled = true;
         }
         GetComponent<Collider2D>().enabled = false;
-        Camera.main.GetComponent<CameraController>().RemoveXDamping();
+        Camera.main.GetComponent<CameraController>().RemoveXDampingSlowly();
     }
 
-    private void restoreRenderers()
+    private void RestoreRenderers()
     {
         foreach (var tr in rendererTransforms)
         {

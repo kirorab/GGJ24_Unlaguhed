@@ -30,7 +30,7 @@ public enum EEvent
     /// </summary>
     OnTurtleChoose,
     /// <summary>
-    /// 结束乌龟选择,true为放过，false为杀害
+    /// 结束乌龟选择，true为放过，false为杀害
     /// </summary>
     OnEndTurtleChoose, 
     /// <summary>
@@ -58,5 +58,12 @@ public enum EEvent
     /// bug选择等待时
     /// </summary>
     OnBugWait,
-    
+    /// <summary>
+    /// 当进入笑的选择时
+    /// </summary>
+    OnLaughChoose,
+    /// <summary>
+    /// 结束笑的选择，true为放笑，false为不笑
+    /// </summary>
+    OnEndLaughChoose,
 }

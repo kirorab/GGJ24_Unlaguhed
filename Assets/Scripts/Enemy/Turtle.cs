@@ -138,6 +138,7 @@ public class Turtle : MonoBehaviour
     private IEnumerator RestartAttack()
     {
         TurtleState = ETurtleState.Weak;
+        animator.Play("Walk");
         yield return new WaitForSeconds(weakDuration);
         StartAttack();
     }
@@ -195,7 +196,7 @@ public class Turtle : MonoBehaviour
     private void OnTriggerPokemonBattle()
     {
         gameObject.SetActive(false);
-        UIManager.Instance.PlayVideo();
+        UIManager.Instance.PlayWhoIAmVideo();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -223,6 +224,9 @@ public class Turtle : MonoBehaviour
         }
         turtleShells.Clear();
         StopCoroutine(currentCoroutine);
-        GetForgiven();
+        curStage = 2;
+        TurtleState = ETurtleState.Idle;
+        EventSystem.Instance.Invoke(EEvent.OnTurtleChoose);
+        killTurtleChoosed = true;
     }
 }
