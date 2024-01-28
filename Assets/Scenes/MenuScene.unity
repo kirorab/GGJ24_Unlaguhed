@@ -577,11 +577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -593,6 +593,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896910656160931294, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
+      propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931294, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
@@ -904,11 +908,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -920,6 +924,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931265, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2896910656160931294, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}
+      propertyPath: m_Transition
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2896910656160931294, guid: bc0c4a41aa74a5f4d8b9d4ebbdc687d4, type: 3}

@@ -66,4 +66,8 @@ public enum EEvent
     /// 结束笑的选择，true为放笑，false为不笑
     /// </summary>
     OnEndLaughChoose,
+    /// <summary>
+    /// 当切换静音时，true为静音，false为取消静音
+    /// </summary>
+    OnToggleMute,
 }

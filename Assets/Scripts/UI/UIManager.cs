@@ -13,6 +13,9 @@ public class UIManager : Singleton<UIManager>
     public GameObject laughChoose;
     public VideoPlayer whoIAm;
     public VideoPlayer closingCredits;
+    public Sprite muteSprite;
+    public Sprite unMuteSprite;
+    public Image muteImage;
 
     protected override void Awake()
     {
@@ -29,6 +32,7 @@ public class UIManager : Singleton<UIManager>
         whoIAm.loopPointReached += OnWhoIAmVideoEnd;
         EventSystem.Instance.AddListener(EEvent.OnLaughChoose, HandleLaughChoose);
         closingCredits.loopPointReached += (VideoPlayer _) => ReturnToMenuScene();
+        EventSystem.Instance.AddListener<bool>(EEvent.OnToggleMute, OnToggleMute);
     }
 
 #if UNITY_EDITOR
@@ -128,5 +132,24 @@ public class UIManager : Singleton<UIManager>
     public void ReturnToMenuScene()
     {
         SceneSystem.Instance.LoadScene(EScene.MenuScene);
+    }
+
+    public void ToggleMute()
+    {
+        AudioManager.Instance.ToggleMute();
+    }
+
+    private void OnToggleMute(bool mute)
+    {
+        if (mute)
+        {
+            muteImage.sprite = muteSprite;
+        }
+        else
+        {
+            muteImage.sprite = unMuteSprite;
+        }
+        whoIAm.SetDirectAudioMute(0, mute);
+        closingCredits.SetDirectAudioMute(0, mute);
     }
 }

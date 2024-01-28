@@ -6,6 +6,12 @@ public class DialogueNpc : InteractiveObject
 {
     public Dialogues dias;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, () => isInteracted = true);
+    }
+
     public override void OnInteract()
     {
         EventSystem.Instance.Invoke(EEvent.OnStartDialogue);
