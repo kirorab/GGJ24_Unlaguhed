@@ -9,7 +9,7 @@ public class DialogueNpc : InteractiveObject
 
     private void Awake()
     {
-        EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, () => isInteracted = true);
+        EventSystem.Instance.AddListener(EEvent.OnLaughChoose, () => isInteracted = true);
     }
 
     public override void OnInteract()
