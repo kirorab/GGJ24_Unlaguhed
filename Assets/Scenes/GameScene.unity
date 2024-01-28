@@ -2757,6 +2757,7 @@ MonoBehaviour:
   turtle: {fileID: 1775006460}
   pikachu: {fileID: 1338395866}
   ghostPoundingTheWallTrigger: {fileID: 1895260414}
+  turtleBattleTrigger: {fileID: 858136436}
   blockWall: {fileID: 783542308}
 --- !u!1 &221161833
 GameObject:

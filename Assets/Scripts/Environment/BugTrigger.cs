@@ -8,6 +8,7 @@ public class BugTrigger : MonoBehaviour
     public GameObject turtle;
     public GameObject pikachu;
     public Collider2D ghostPoundingTheWallTrigger;
+    public Collider2D turtleBattleTrigger;
     public BlockWall blockWall;
 
     private void Start()
@@ -17,6 +18,7 @@ public class BugTrigger : MonoBehaviour
             turtle.SetActive(false);
             pikachu.SetActive(false);
             ghostPoundingTheWallTrigger.enabled = false;
+            turtleBattleTrigger.enabled = false;
             blockWall.RemoveBlockWall();
             PlayerInfo.Instance.transform.position = playerPosition;
             GetComponent<Collider2D>().enabled = false;
