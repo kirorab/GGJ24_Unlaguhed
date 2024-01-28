@@ -1241,7 +1241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: {fileID: 899620214}
-  dias: {fileID: 11400000, guid: 45b931cce4de1d2478b1ed496581de87, type: 2}
+  beginDias: {fileID: 11400000, guid: 45b931cce4de1d2478b1ed496581de87, type: 2}
+  endDias: {fileID: 11400000, guid: e4059b6ecde644647a23b2a03173d355, type: 2}
   reminder: {fileID: 1926363435}
 --- !u!1 &80360028
 GameObject:
