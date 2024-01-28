@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pikachu
   m_EditorClassIdentifier: 
   pokemon: 1
-  maxDefense: 10
-  maxHealth: 2
+  maxDefense: 2
+  maxHealth: 10
   maxEnergy: 2
   pokemonImage: {fileID: 21300000, guid: a613c3a6e2228964cba127607d37e87a, type: 3}
