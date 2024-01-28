@@ -21156,11 +21156,12 @@ MonoBehaviour:
   apple: {fileID: 744979669}
   Pikachu: {fileID: 1338395866}
   TurtleShellPrefabSmall: {fileID: 2698835734700684421, guid: a9eb125c6c2618c40bd4ad822b751868, type: 3}
-  TurtleShellPrefabBig: {fileID: 2698835734700684421, guid: a9eb125c6c2618c40bd4ad822b751868, type: 3}
+  TurtleShellPrefabBig: {fileID: 6864565100588122623, guid: 39de25ea6f2c33a41a932ac1cd6ee7e5, type: 3}
   TurtleDefense: {fileID: 1961246027}
   PikachuCharge: {fileID: 1822929159}
   Thunder: {fileID: 1548167809}
   ThunderBallPrefab: {fileID: 1039454630942158884, guid: 282a313c71255e54baa684b3877a0b74, type: 3}
+  AttackSpeed: 0.2
 --- !u!1 &1903965873
 GameObject:
   m_ObjectHideFlags: 0
