@@ -24,7 +24,6 @@ public class UIManager : Singleton<UIManager>
         EventSystem.Instance.AddListener(EEvent.OnEndDialogue, SetDandCbgActiveFalse);
         EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, HandleTurtleChoose);
         EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, SetDandCbgActiveTrue);
-        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, PlayVideo);
         videoPlayer.loopPointReached += OnVideoEnd;
     }
 
@@ -64,7 +63,7 @@ public class UIManager : Singleton<UIManager>
         DandCbg.SetActive(false);
     }
 
-    private void PlayVideo()
+    public void PlayVideo()
     {
         videoPlayer.gameObject.SetActive(true);
         videoPlayer.Play();
