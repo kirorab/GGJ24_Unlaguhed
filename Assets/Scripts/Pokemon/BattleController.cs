@@ -44,7 +44,7 @@ public class BattleController : MonoBehaviour
         }
         else
         {
-            EventSystem.Instance.Invoke<bool>(EEvent.OnEndTurtleChoose, false);
+            EventSystem.Instance.Invoke(EEvent.OnKoopaDead);
         }
     }
 
@@ -54,14 +54,12 @@ public class BattleController : MonoBehaviour
         {
             case 0:
                 marioTurtle.NormalAttack(pikachu);
-                EventSystem.Instance.Invoke(EEvent.OnKoopaAttack);
                 break;
             case 1:
                 marioTurtle.ShellDefense();
                 break;
             case 2:
                 marioTurtle.ShellRush(pikachu);
-                EventSystem.Instance.Invoke(EEvent.OnKoopaAttack);
                 break;
         }
         AudioManager.Instance.PlayAudio(AudioType.KickOrImpact);
@@ -75,6 +73,11 @@ public class BattleController : MonoBehaviour
         // 例如：普攻，普攻，蓄力，十万伏特，普攻，蓄力，普攻
         // 可以用一个额外的变量来追踪当前的行动是哪一个
         //皮卡丘攻击顺序：普攻，普攻，蓄力，十万伏特，普攻，蓄力，普攻。按上列顺序循环
+        if (pikachu.IsStunned)
+        {
+            pikachu.IsStunned = false;
+            return;
+        }
         switch (turn)
         {
             case 0:
@@ -107,7 +110,6 @@ public class BattleController : MonoBehaviour
                 break;
         }
         AudioManager.Instance.PlayAudio(AudioType.ElectricShock);
-        EventSystem.Instance.Invoke(EEvent.OnPikachuAttack);
     }
 
     
