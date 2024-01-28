@@ -18,7 +18,7 @@ public class PokemonUI : MonoBehaviour
     
     protected virtual void Awake()
     {
-        EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, Init);
+        Init();
         EventSystem.Instance.AddListener<Pokemon, float>(EEvent.OnPokemonHealthChange, UpdateHealthBar);
         EventSystem.Instance.AddListener<Pokemon, int>(EEvent.OnPokemonEnergyChange, ChangeEnergy);
     }

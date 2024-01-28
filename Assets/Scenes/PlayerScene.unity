@@ -593,49 +593,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473012311}
   m_CullTransparentMesh: 1
---- !u!1 &500977756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8505129697158615528, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
-  m_PrefabInstance: {fileID: 1903423759328101861}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &500977759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500977756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aba3f5beac44c7897d10a931e9c7be3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokemonInfo: {fileID: 11400000, guid: ab97fe72021ac5548a4e911b98825f0d, type: 2}
-  defense: 0
-  health: 0
-  energy: 0
-  NextAttackBonus: 1
-  NextDefenseBonus: 0
-  IsStunned: 0
---- !u!114 &500977760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500977756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b43bbfdd94b04efb919ef578b9dcabf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokemonInfo: {fileID: 11400000, guid: afad53c487eae13439a626c955940b42, type: 2}
-  defense: 0
-  health: 0
-  energy: 0
-  NextAttackBonus: 1
-  NextDefenseBonus: 0
-  IsStunned: 0
 --- !u!1 &504356607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,14 +1533,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1709564866814857117, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
-      propertyPath: isBlank
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1709564866814857117, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
-      propertyPath: _PokemonInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: ab97fe72021ac5548a4e911b98825f0d, type: 2}
     - target: {fileID: 1903423760355902059, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1672,13 +1621,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PokemonCanva
       objectReference: {fileID: 0}
-    - target: {fileID: 3700606660043805321, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
-      propertyPath: _PokemonInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: afad53c487eae13439a626c955940b42, type: 2}
-    m_RemovedComponents:
-    - {fileID: 5410998509348639508, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
-    - {fileID: 5099327786627856496, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2543d7c2bf908404d8bfb30b78c72ab5, type: 3}
 --- !u!1001 &4584411876036621600
 PrefabInstance:

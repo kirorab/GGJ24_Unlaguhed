@@ -192,6 +192,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4786175162688554709}
   - component: {fileID: 8085763747741414454}
+  - component: {fileID: 500977764}
+  - component: {fileID: 6100769124060781780}
   m_Layer: 0
   m_Name: PokemenBattlecController
   m_TagString: Untagged
@@ -226,6 +228,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6bf8f37c854fe3b9d6c2c73bc305a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &500977764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505129697158615528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aba3f5beac44c7897d10a931e9c7be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemonInfo: {fileID: 11400000, guid: ab97fe72021ac5548a4e911b98825f0d, type: 2}
+  defense: 0
+  health: 0
+  energy: 0
+  NextAttackBonus: 1
+  NextDefenseBonus: 0
+  IsStunned: 0
+--- !u!114 &6100769124060781780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8505129697158615528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b43bbfdd94b04efb919ef578b9dcabf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemonInfo: {fileID: 11400000, guid: afad53c487eae13439a626c955940b42, type: 2}
+  defense: 0
+  health: 0
+  energy: 0
+  NextAttackBonus: 1
+  NextDefenseBonus: 0
+  IsStunned: 0
 --- !u!1001 &1709564866814857110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -364,6 +404,7 @@ MonoBehaviour:
   healthBar: {fileID: 1903423759657032484}
   energyBar: {fileID: 1903423760862795374}
   energyPointPrefab: {fileID: 3559040674983236489, guid: eae108a1f9c3e654cbe01ab460ee6ebf, type: 3}
+  _PokemonInfo: {fileID: 11400000, guid: ab97fe72021ac5548a4e911b98825f0d, type: 2}
   SkillButtons:
   - {fileID: 2841406312681597354}
   - {fileID: 1903423759916864916}
@@ -373,7 +414,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 591ef970a41a2cd4badf6936380994d2, type: 2}
   - {fileID: 11400000, guid: 95219165a2183d645a23a21ec1479b98, type: 2}
   - {fileID: 11400000, guid: de0dcecb326a54e478dd15af4a5d36bb, type: 2}
-  isBlank: 1
+  isBlank: 0
 --- !u!224 &1903423760424541455 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 996361919505388185, guid: e96f0901cd697174b837406795d27da5, type: 3}
@@ -723,6 +764,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2968263536041031291, guid: e96f0901cd697174b837406795d27da5, type: 3}
       propertyPath: pokemonInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: afad53c487eae13439a626c955940b42, type: 2}
+    - target: {fileID: 2968263536041031291, guid: e96f0901cd697174b837406795d27da5, type: 3}
+      propertyPath: _PokemonInfo
       value: 
       objectReference: {fileID: 11400000, guid: afad53c487eae13439a626c955940b42, type: 2}
     - target: {fileID: 5059151235668227374, guid: e96f0901cd697174b837406795d27da5, type: 3}
