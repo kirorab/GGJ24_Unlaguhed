@@ -138,6 +138,7 @@ public class Turtle : MonoBehaviour
     private IEnumerator RestartAttack()
     {
         TurtleState = ETurtleState.Weak;
+        animator.Play("Walk");
         yield return new WaitForSeconds(weakDuration);
         StartAttack();
     }
@@ -147,8 +148,7 @@ public class Turtle : MonoBehaviour
         StopCoroutine(currentCoroutine);
         if (curStage == 2)
         {
-            gameObject.SetActive(false);
-            EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
+            Die();
         }
         else
         {
@@ -183,7 +183,20 @@ public class Turtle : MonoBehaviour
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
         TurtleState = ETurtleState.Follow;
         EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
-        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, () => gameObject.SetActive(false));
+        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, OnTriggerPokemonBattle);
+    }
+
+    private void Die()
+    {
+        gameObject.SetActive(false);
+        EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
+        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, () => EventSystem.Instance.Invoke(EEvent.OnStartPokemonBattle));
+    }
+
+    private void OnTriggerPokemonBattle()
+    {
+        gameObject.SetActive(false);
+        UIManager.Instance.PlayWhoIAmVideo();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -211,6 +224,9 @@ public class Turtle : MonoBehaviour
         }
         turtleShells.Clear();
         StopCoroutine(currentCoroutine);
-        GetForgiven();
+        curStage = 2;
+        TurtleState = ETurtleState.Idle;
+        EventSystem.Instance.Invoke(EEvent.OnTurtleChoose);
+        killTurtleChoosed = true;
     }
 }

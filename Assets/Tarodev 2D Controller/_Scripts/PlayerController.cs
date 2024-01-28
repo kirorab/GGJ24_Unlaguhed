@@ -1,4 +1,6 @@
+using Cinemachine;
 using System;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace TarodevController
@@ -42,6 +44,8 @@ namespace TarodevController
             EventSystem.Instance.AddListener(EEvent.OnEndDialogue, PlayerContinue);
             EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, PlayerPause);
             EventSystem.Instance.AddListener<bool>(EEvent.OnEndTurtleChoose, (bool isForgive) => PlayerContinue());
+            EventSystem.Instance.AddListener(EEvent.OnLaughChoose, PlayerPause);
+            EventSystem.Instance.AddListener<bool>(EEvent.OnEndLaughChoose, (bool laugh) => PlayerContinue());
         }
 
         private void PlayerPause()

@@ -13,7 +13,7 @@ public class BattleController : MonoBehaviour
         pikachu = GetComponent<PokemonPikachu>();
         marioTurtle = GetComponent<Koopa>();
         // 开始战斗
-        EventSystem.Instance.Invoke(EEvent.OnStartPokemonBattle);
+        //EventSystem.Instance.Invoke(EEvent.OnStartPokemonBattle);
         StartCoroutine(BattleRoutine());
     }
 

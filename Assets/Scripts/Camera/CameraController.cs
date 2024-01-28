@@ -22,6 +22,7 @@ public class CameraController : MonoBehaviour
         EventSystem.Instance.AddListener(EEvent.OnEndTurtleBattle, RestoreCamera);
         EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, LockCameraOnPokemonBattle);
         EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, RestoreCamera);
+        EventSystem.Instance.AddListener<bool>(EEvent.OnEndLaughChoose, (bool laugh) => { if (!laugh) SetXDamping(0); });
     }
 
     private void LockCameraOnTurtleBattle()
@@ -36,7 +37,7 @@ public class CameraController : MonoBehaviour
             StopCoroutine(dampingCoroutine);
             dampingCoroutine = null;
         }
-        transposer.m_XDamping = xDamping;
+        SetXDamping(xDamping);
         virCam.Follow = pokemonBattleCenter;
     }
 
@@ -45,7 +46,7 @@ public class CameraController : MonoBehaviour
         virCam.Follow = PlayerInfo.Instance.transform;
     }
 
-    public void RemoveXDamping()
+    public void RemoveXDampingSlowly()
     {
         dampingCoroutine = StartCoroutine(DoRemoveXDamping());
     }
@@ -56,10 +57,15 @@ public class CameraController : MonoBehaviour
         float time = 0;
         while (time < duration)
         {
-            transposer.m_XDamping = xDamping * (1 - time / duration);
+            SetXDamping(xDamping * (1 - time / duration));
             time += Time.deltaTime;
             yield return null;
         }
-        transposer.m_XDamping = 0;
+        SetXDamping(0);
+    }
+
+    private void SetXDamping(float xDamping)
+    {
+        transposer.m_XDamping = xDamping;
     }
 }
