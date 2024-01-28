@@ -6,7 +6,7 @@ public class Pikachu : InteractiveObject
 {
     public override void OnInteract()
     {
-        EventSystem.Instance.Invoke(EEvent.OnStartPokemonBattle);
+        EventSystem.Instance.Invoke(EEvent.OnTriggerPokemonBattle);
     }
 
     public override void Update()

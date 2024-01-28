@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
         xDamping = transposer.m_XDamping;
         EventSystem.Instance.AddListener(EEvent.OnStartTurtleBattle, LockCameraOnTurtleBattle);
         EventSystem.Instance.AddListener(EEvent.OnEndTurtleBattle, RestoreCamera);
-        EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, LockCameraOnPokemonBattle);
+        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, LockCameraOnPokemonBattle);
         EventSystem.Instance.AddListener(EEvent.OnEndPokemonBattle, RestoreCamera);
     }
 

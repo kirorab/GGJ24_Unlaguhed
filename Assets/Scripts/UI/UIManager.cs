@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class UIManager : Singleton<UIManager>
 {
     public GameObject SaveFailed;
     public GameObject DandCbg;
     public GameObject TurtleChoose;
+    public VideoPlayer videoPlayer;
 
     protected override void Awake()
     {
@@ -16,11 +18,14 @@ public class UIManager : Singleton<UIManager>
         SaveFailed.SetActive(false);
         DandCbg.SetActive(false);
         TurtleChoose.SetActive(false);
+        videoPlayer.gameObject.SetActive(false);
         EventSystem.Instance.AddListener(EEvent.OnSaveFailed, HandleSaveFailed);
         EventSystem.Instance.AddListener(EEvent.OnStartDialogue, SetDandCbgActiveTrue);
         EventSystem.Instance.AddListener(EEvent.OnEndDialogue, SetDandCbgActiveFalse);
         EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, HandleTurtleChoose);
         EventSystem.Instance.AddListener(EEvent.OnTurtleChoose, SetDandCbgActiveTrue);
+        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, PlayVideo);
+        videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     // Start is called before the first frame update
@@ -57,5 +62,17 @@ public class UIManager : Singleton<UIManager>
     private void SetDandCbgActiveFalse()
     {
         DandCbg.SetActive(false);
+    }
+
+    private void PlayVideo()
+    {
+        videoPlayer.gameObject.SetActive(true);
+        videoPlayer.Play();
+    }
+
+    private void OnVideoEnd(VideoPlayer _)
+    {
+        videoPlayer.gameObject.SetActive(false);
+        EventSystem.Instance.Invoke(EEvent.OnStartPokemonBattle);
     }
 }

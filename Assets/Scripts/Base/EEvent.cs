@@ -38,6 +38,10 @@ public enum EEvent
     /// </summary>
     OnEndTurtleBattle,
     /// <summary>
+    /// 触发与宝可梦的战斗时
+    /// </summary>
+    OnTriggerPokemonBattle,
+    /// <summary>
     /// 开始与宝可梦的战斗时
     /// </summary>
     OnStartPokemonBattle,

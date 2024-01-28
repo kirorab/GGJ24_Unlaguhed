@@ -127,9 +127,7 @@ public class Turtle : MonoBehaviour
     {
         if (isForgive)
         {
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
-            TurtleState = ETurtleState.Follow;
-            EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
+            GetForgiven();
         }
         else
         {
@@ -180,6 +178,14 @@ public class Turtle : MonoBehaviour
         towardsRight = PlayerInfo.Instance.transform.position.x < transform.position.x;
     }
 
+    private void GetForgiven()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
+        TurtleState = ETurtleState.Follow;
+        EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
+        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, () => gameObject.SetActive(false));
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
@@ -205,8 +211,6 @@ public class Turtle : MonoBehaviour
         }
         turtleShells.Clear();
         StopCoroutine(currentCoroutine);
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Turtle"), true);
-        TurtleState = ETurtleState.Follow;
-        EventSystem.Instance.Invoke(EEvent.OnEndTurtleBattle);
+        GetForgiven();
     }
 }
