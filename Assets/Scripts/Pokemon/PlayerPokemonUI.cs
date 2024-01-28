@@ -9,26 +9,30 @@ public class PlayerPokemonUI : PokemonUI
 {
     public GameObject[] SkillButtons = new GameObject[3];
     public List<SkillMaterial> SkillMaterials;
+    public PokemonInfo blank;
+    public Turtle t;
     protected override void Awake()
     {
         base.Awake();
         
         EventSystem.Instance.AddListener<int>(EEvent.OnKoopaTurnStart, HandlePlayerTurnStart);
         EventSystem.Instance.AddListener(EEvent.OnPikachuTurnStart, HandlePlayerTurnEnd);
-        EventSystem.Instance.AddListener<bool>(EEvent.OnEndTurtleChoose, HandlePokemonBlank);
+        HandlePokemonBlank(t.TurtleState == ETurtleState.Follow);
     }
 
-    public void HandlePokemonBlank(bool b)
+    public void HandlePokemonBlank(bool isForgive)
     {
-        if (b)
+        if (!isForgive)
         {
-            return;
+            foreach (var button in SkillButtons)
+            {
+                DrawButton(button, SkillMaterials[SkillMaterials.Count - 1]);
+                
+            }
+            _PokemonInfo = blank;
+            base.Init();
         }
-        foreach (var button in SkillButtons)
-        {
-            DrawButton(button, SkillMaterials[SkillMaterials.Count - 1]);
-            _PokemonInfo = new PokemonInfo();
-        }
+        
     }
     
     public void HandlePlayerTurnStart(int energy)
@@ -87,6 +91,8 @@ public class PlayerPokemonUI : PokemonUI
     {
         var childIcon = g.transform.Find("SkillIcon");
         childIcon.GetComponent<Button>().enabled = b;
+        var color = childIcon.GetComponent<Button>().image.color;
+        color.a = b ? 1 : 0.5f;
     }
     
     

@@ -12,6 +12,7 @@ public class BattleController : MonoBehaviour
     {
         pikachu = GetComponent<PokemonPikachu>();
         marioTurtle = GetComponent<Koopa>();
+        EventSystem.Instance.AddListener(EEvent.OnAppleHitPikachu, () => pikachu.TakeDamage(999));
         // 开始战斗
         //EventSystem.Instance.Invoke(EEvent.OnStartPokemonBattle);
         StartCoroutine(BattleRoutine());

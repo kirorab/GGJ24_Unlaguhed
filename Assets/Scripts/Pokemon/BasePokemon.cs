@@ -26,6 +26,7 @@ public class BasePokemon : MonoBehaviour
         health -= Math.Max(0, d - defense);
         if (health <= 0)
         {
+            health = 0;
             isDead();
         }
         EventSystem.Instance.Invoke<Pokemon, float>(EEvent.OnPokemonHealthChange, pokemonInfo.pokemon, health);

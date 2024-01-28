@@ -14,7 +14,7 @@ public abstract class InteractiveObject : MonoBehaviour
         hint.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (isInteracted)
         {

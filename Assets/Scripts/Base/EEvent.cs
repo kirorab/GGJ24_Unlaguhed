@@ -51,6 +51,7 @@ public enum EEvent
     OnPokemonHealthChange,
     OnPokemonEnergyChange,
     OnKoopaTurnStart,
+    OnAppleHitPikachu,
     OnPikachuTurnStart,
     /// <summary>
     /// 结束与宝可梦的战斗时
