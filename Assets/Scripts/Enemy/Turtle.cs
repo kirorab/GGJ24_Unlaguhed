@@ -27,6 +27,7 @@ public class Turtle : MonoBehaviour
     public float followDist;
 
     private Rigidbody2D rb2d;
+    private Collider2D collider2d;
     private Animator animator;
     private Coroutine currentCoroutine;
     private List<TurtleShell> turtleShells;
@@ -34,12 +35,14 @@ public class Turtle : MonoBehaviour
     private int curCollisionCount;
     private int curStage;
     private bool killTurtleChoosed;
+    private bool isTouchingWall;
 
     public ETurtleState TurtleState { private set; get; }
 
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        collider2d = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         turtleShells = new List<TurtleShell>();
         curStage = 0;
@@ -175,7 +178,7 @@ public class Turtle : MonoBehaviour
         TurtleState = ETurtleState.Rush;
         animator.Play("ShellWalk");
         curCollisionCount = 0;
-        towardsRight = PlayerInfo.Instance.transform.position.x < transform.position.x;
+        if (!isTouchingWall) towardsRight = PlayerInfo.Instance.transform.position.x < transform.position.x;
     }
 
     private void GetForgiven()
@@ -212,7 +215,16 @@ public class Turtle : MonoBehaviour
                     StartAttack();
                 }
             }
+            isTouchingWall = true;
             towardsRight = !towardsRight;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            isTouchingWall = false;
         }
     }
 
