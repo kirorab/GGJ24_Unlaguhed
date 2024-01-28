@@ -33,7 +33,7 @@ public class PokemonBattleField : MonoBehaviour
         EventSystem.Instance.AddListener<int>(EEvent.OnKoopaTurnStart, ((i) => Thunder.SetActive(false)));
         EventSystem.Instance.AddListener(EEvent.OnKoopaDefenseEnd, (() =>
         {
-            Debug.Log("turtle defense end");
+            //Debug.Log("turtle defense end");
             TurtleDefense.SetActive(false);
         }));
         EventSystem.Instance.AddListener(EEvent.OnPikaChargeEnd, (() => PikachuCharge.SetActive(false)));

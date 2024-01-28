@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PokemonUI : MonoBehaviour
 {
 
-    private TMP_Text name;
+    private TMP_Text nameText;
     public Image pokemonImage;
     public Image healthBar;
     public GameObject energyBar;
@@ -25,8 +25,8 @@ public class PokemonUI : MonoBehaviour
 
     public virtual void Init()
     {
-        name = GetComponentInChildren<TMP_Text>();
-        name.text = _PokemonInfo.name;
+        nameText = GetComponentInChildren<TMP_Text>();
+        nameText.text = _PokemonInfo.name;
         pokemonImage.sprite = _PokemonInfo.pokemonImage;
         
         //AddEnergy(0);
