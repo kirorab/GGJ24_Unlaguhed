@@ -6,14 +6,20 @@ public class BugTrigger : MonoBehaviour
 {
     public Vector3 playerPosition;
     public GameObject turtle;
-    public GhostPoundingTheWallTrigger ghostPoundingTheWallTrigger;
+    public GameObject pikachu;
+    public Collider2D ghostPoundingTheWallTrigger;
+    public Collider2D turtleBattleTrigger;
+    public BlockWall blockWall;
 
     private void Start()
     {
         if (!GameManager.Instance.normalState)
         {
-            Destroy(turtle);
-            Destroy(ghostPoundingTheWallTrigger);
+            turtle.SetActive(false);
+            pikachu.SetActive(false);
+            ghostPoundingTheWallTrigger.enabled = false;
+            turtleBattleTrigger.enabled = false;
+            blockWall.RemoveBlockWall();
             PlayerInfo.Instance.transform.position = playerPosition;
             GetComponent<Collider2D>().enabled = false;
             GameManager.Instance.normalState = true;

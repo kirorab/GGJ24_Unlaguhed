@@ -1241,7 +1241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hint: {fileID: 899620214}
-  dias: {fileID: 11400000, guid: 45b931cce4de1d2478b1ed496581de87, type: 2}
+  beginDias: {fileID: 11400000, guid: 45b931cce4de1d2478b1ed496581de87, type: 2}
+  endDias: {fileID: 11400000, guid: e4059b6ecde644647a23b2a03173d355, type: 2}
   reminder: {fileID: 1926363435}
 --- !u!1 &80360028
 GameObject:
@@ -1671,6 +1672,7 @@ MonoBehaviour:
   kickOrImpactClip: {fileID: 8300000, guid: 7c51e1a7ce83d5a44bfc64ddc53e1223, type: 3}
   electricShockClip: {fileID: 8300000, guid: 1468e6c90ef0b0d46bb8e761e7b5157e, type: 3}
   pikachuShoutClip: {fileID: 8300000, guid: c7fd56b721727bb4bb769d0fa2de0632, type: 3}
+  firebornClip: {fileID: 8300000, guid: ee10e496e2783b84991fa50fc7b9e7c5, type: 3}
 --- !u!1 &133149366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2754,7 +2756,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {x: 107, y: -0.2, z: 0}
   turtle: {fileID: 1775006460}
-  ghostPoundingTheWallTrigger: {fileID: 1895260415}
+  pikachu: {fileID: 1338395866}
+  ghostPoundingTheWallTrigger: {fileID: 1895260414}
+  turtleBattleTrigger: {fileID: 858136436}
+  blockWall: {fileID: 783542308}
 --- !u!1 &221161833
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class DialogueNpc : InteractiveObject
 {
-    public Dialogues dias;
+    public Dialogues beginDias;
+    public Dialogues endDias;
+    private Dialogues curDias;
     public GameObject reminder;
 
     private void Awake()
     {
         EventSystem.Instance.AddListener(EEvent.OnLaughChoose, AfterChooseLaugh);
+        curDias = beginDias;
     }
 
     public override void OnInteract()
     {
         EventSystem.Instance.Invoke(EEvent.OnStartDialogue);
-        EventSystem.Instance.Invoke<Dialogues>(EEvent.OnstartDialogueWithDialogues, dias);
+        EventSystem.Instance.Invoke<Dialogues>(EEvent.OnstartDialogueWithDialogues, curDias);
         //Debug.Log("interact");
     }
 
@@ -26,7 +29,8 @@ public class DialogueNpc : InteractiveObject
 
     private void AfterChooseLaugh()
     {
-        isInteracted = true;
+        isInteracted = false;
         reminder.SetActive(false);
+        curDias = endDias;
     }
 }
