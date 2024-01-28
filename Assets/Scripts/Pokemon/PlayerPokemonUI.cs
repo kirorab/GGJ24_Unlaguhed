@@ -9,13 +9,26 @@ public class PlayerPokemonUI : PokemonUI
 {
     public GameObject[] SkillButtons = new GameObject[3];
     public List<SkillMaterial> SkillMaterials;
-    [SerializeField]private bool isBlank;
-
     protected override void Awake()
     {
         base.Awake();
+        
         EventSystem.Instance.AddListener<int>(EEvent.OnKoopaTurnStart, HandlePlayerTurnStart);
         EventSystem.Instance.AddListener(EEvent.OnPikachuTurnStart, HandlePlayerTurnEnd);
+        EventSystem.Instance.AddListener<bool>(EEvent.OnEndTurtleChoose, HandlePokemonBlank);
+    }
+
+    public void HandlePokemonBlank(bool b)
+    {
+        if (b)
+        {
+            return;
+        }
+        foreach (var button in SkillButtons)
+        {
+            DrawButton(button, SkillMaterials[SkillMaterials.Count - 1]);
+            _PokemonInfo = new PokemonInfo();
+        }
     }
     
     public void HandlePlayerTurnStart(int energy)
@@ -62,20 +75,11 @@ public class PlayerPokemonUI : PokemonUI
     {
         base.Init();
         Debug.Log("player init");
-        if (isBlank)
+        for (int i = 0; i < 3; i++)
         {
-            foreach (var button in SkillButtons)
-            {
-                DrawButton(button, SkillMaterials[SkillMaterials.Count - 1]);
-            }
+            DrawButton(SkillButtons[i], SkillMaterials[i]);
         }
-        else
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                DrawButton(SkillButtons[i], SkillMaterials[i]);
-            }
-        }
+        
     }
 
 
