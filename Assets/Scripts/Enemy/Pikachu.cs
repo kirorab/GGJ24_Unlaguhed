@@ -27,13 +27,13 @@ public class Pikachu : InteractiveObject
         {
             EventSystem.Instance.Invoke(EEvent.OnAppleHitPikachu);
             //Destroy(other.gameObject);
-            StartCoroutine(Wait(2));
-            EventSystem.Instance.Invoke(EEvent.OnEndPokemonBattle);
+            StartCoroutine(Wait(1));
         }
     }
     
     IEnumerator Wait(float time)
     {
         yield return new WaitForSeconds(time);
+        EventSystem.Instance.Invoke(EEvent.OnEndPokemonBattle);
     }
 }
