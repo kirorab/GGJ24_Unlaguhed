@@ -29,7 +29,7 @@ public class PokemonUI : MonoBehaviour
         name.text = _PokemonInfo.name;
         pokemonImage.sprite = _PokemonInfo.pokemonImage;
         
-        AddEnergy(_PokemonInfo.maxEnergy);
+        //AddEnergy(0);
     }
 
 
