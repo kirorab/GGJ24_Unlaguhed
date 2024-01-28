@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CharacterFlyController : CharacterBugController
 {
-    public float spasmDuration = 0.1f;
-    public float spasmIntensity = 0.5f;
+    public float flySpeed = 3f;
 
     private void Start()
     {
@@ -14,23 +13,18 @@ public class CharacterFlyController : CharacterBugController
 
     public override void StartBugging()
     {
-        StartCoroutine(SpasmCoroutine());
+        StartCoroutine(FlyCoroutine());
     }
 
-    private IEnumerator SpasmCoroutine()
+    private IEnumerator FlyCoroutine()
     {
-        Vector3 originalPosition = transform.position;
         while (true)
         {
-            // 随机生成偏移值
-            Vector3 spasmOffset = new Vector3(Random.Range(-spasmIntensity, spasmIntensity), 
-                Random.Range(-spasmIntensity, spasmIntensity));
-
             // 应用偏移值
-            transform.position = originalPosition + spasmOffset;
+            transform.Translate(0, flySpeed * Time.deltaTime, 0, Space.World);
 
             // 等待一段时间
-            yield return new WaitForSeconds(spasmDuration);
+            yield return null;
         }
     }
 }

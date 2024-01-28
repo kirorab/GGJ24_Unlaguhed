@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public bool laughed = false;
 
+    public bool normalState = true;
+
     private static GameManager _instance;
 
     // 获取单例实例

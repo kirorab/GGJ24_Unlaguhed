@@ -5,11 +5,11 @@ using UnityEngine;
 public class DialogueNpc : InteractiveObject
 {
     public Dialogues dias;
-    // Start is called before the first frame update
+    public GameObject reminder;
 
     private void Awake()
     {
-        EventSystem.Instance.AddListener(EEvent.OnLaughChoose, () => isInteracted = true);
+        EventSystem.Instance.AddListener(EEvent.OnLaughChoose, AfterChooseLaugh);
     }
 
     public override void OnInteract()
@@ -22,5 +22,11 @@ public class DialogueNpc : InteractiveObject
     public override void Update()
     {
         BaseUpdate();
+    }
+
+    private void AfterChooseLaugh()
+    {
+        isInteracted = true;
+        reminder.SetActive(false);
     }
 }
