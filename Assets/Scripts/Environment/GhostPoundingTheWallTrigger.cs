@@ -10,7 +10,7 @@ public class GhostPoundingTheWallTrigger : MonoBehaviour
 
     private void Awake()
     {
-        EventSystem.Instance.AddListener(EEvent.OnStartPokemonBattle, restoreRenderers);
+        EventSystem.Instance.AddListener(EEvent.OnTriggerPokemonBattle, restoreRenderers);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
